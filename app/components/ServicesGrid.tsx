@@ -1,72 +1,203 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function ServicesGrid() {
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePos({ x: e.clientX, y: e.clientY });
+    };
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   const services = [
     {
-      title: "Plumbing Services",
-      icon: "💧",
-      tagline: "Emergency & Maintenance",
-      description: "Looking for the best plumbing services in the UK? We handle everything from burst pipes and blocked drains to luxury bathroom installations. Reliable, local plumbers ready to serve.",
-      path: "/services/plumbing-services"
-    },
-    {
-      title: "Heating Services",
+      title: "Boiler",
+      subtitle: "Specialist",
       icon: "🔥",
-      tagline: "Central Heating Experts",
-      description: "Comprehensive heating services including radiator installation, power flushing, and smart thermostat setups. Keep your home warm with our efficient heating solutions.",
+      tagline: "COMBI BOILER SUPPLY & INSTALL",
+      price: "1,450",
+      image: "/client/boiler.jpeg", 
+      description: "Premium combi boiler supply and installation from £1450. We handle full boiler services, expert breakdown repairs, and high-efficiency upgrades across Essex.",
       path: "/services/heating-services"
     },
     {
-      title: "Gas Services",
-      icon: "⚙️",
-      tagline: "Gas Safe Registered",
-      description: "Certified Gas Services for landlords and homeowners. We specialize in boiler servicing, gas safety certificates (CP12), and gas leak detection and repairs.",
+      title: "Gas &",
+      subtitle: "Safety",
+      icon: "🛡️",
+      tagline: "Certified Gas Engineering",
+      price: "1,450",
+      image: "/client/two.jpeg", 
+      description: "Gas Safe registered inspections, leak detection, and emergency gas escape repairs. Professional installation for gas cookers and hobs with full safety certification.",
       path: "/services/gas-services"
+    },
+    {
+      title: "Plumbing &",
+      subtitle: "Fixing",
+      icon: "💧",
+      tagline: "Full System Maintenance",
+      price: "1,450",
+      image: "/client/4.jpeg",
+      description: "Specialist radiator repair and installation. From pipework and leaks to sinks, taps, and hot/cold water systems, we provide precision plumbing solutions.",
+      path: "/services/plumbing-services"
     }
   ];
 
+  // SEO SCHEMA DATA
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Essex Plumbing & Heating Specialists",
+    "address": {
+      "@type": "PostalAddress",
+      "addressRegion": "Essex",
+      "addressCountry": "GB"
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Engineering Services",
+      "itemListElement": services.map((s, i) => ({
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": `${s.title} ${s.subtitle} Essex`
+        },
+        "price": s.price.replace(',', ''),
+        "priceCurrency": "GBP"
+      }))
+    }
+  };
+
   return (
-    <section className="py-24 px-6 bg-white/50" id="services">
-      <div className="mx-auto max-w-7xl">
-        <div className="text-center mb-16">
-          <h2 className="text-[#12416B] text-4xl font-black uppercase tracking-tight">Best UK Services</h2>
-          <div className="w-24 h-2 bg-[#F2CF51] mx-auto mt-4 rounded-full"></div>
-          <p className="mt-4 text-slate-500 max-w-2xl mx-auto">
-            Providing top-tier Plumbing, Heating, and Gas engineering across the region.
+    <section className="py-32 px-4 bg-white relative overflow-hidden group/section" id="services">
+      {/* Schema Injection */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      
+      {/* GLOBAL INTERACTIVE GRID */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-[0.15]"
+        style={{
+          backgroundImage: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, #F2CF51 0%, transparent 400px), 
+                            radial-gradient(#12416B 1px, transparent 1px)`,
+          backgroundSize: '100% 100%, 40px 40px'
+        }}
+      />
+
+      <div className="mx-auto max-w-7xl relative z-10">
+        
+        {/* Header Section */}
+        <div className="relative mb-32 flex flex-col items-center">
+          <div className="flex items-center gap-4 mb-4">
+            <span className="h-[2px] w-12 bg-[#12416B]"></span>
+            <span className="text-[#12416B] font-black uppercase tracking-[0.6em] text-[10px]">Premium Essex Engineering</span>
+            <span className="h-[2px] w-12 bg-[#12416B]"></span>
+          </div>
+          <h2 className="text-[#12416B] text-6xl md:text-9xl font-black uppercase italic leading-none tracking-tighter text-center">
+            EXPERT <span className="text-stroke-2">SERVICES</span>
+          </h2>
+          <p className="mt-8 text-slate-500 font-bold uppercase tracking-[0.2em] text-[11px] max-w-md text-center leading-relaxed">
+            From emergency gas repairs to bespoke boiler installations. The standard in local engineering for modern Essex homes.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+        {/* The Service Card Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
           {services.map((item, i) => (
-            <Link 
-              key={i} 
-              href={item.path}
-              className="group relative bg-white p-10 rounded-[3.5rem] shadow-[0_20px_60px_-15px_rgba(18,65,107,0.1)] border-b-[6px] border-slate-100 hover:border-[#F2CF51] transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl overflow-hidden cursor-pointer block"
-            >
-              {/* Decorative Blur */}
-              <div className="absolute -top-10 -right-10 w-32 h-32 bg-[#F2CF51]/10 rounded-full blur-2xl transition-all group-hover:bg-[#F2CF51]/20"></div>
+            <div key={i} className="group relative flex flex-col h-[700px]">
               
-              {/* Icon */}
-              <div className="w-16 h-16 rounded-2xl bg-[#12416B] text-2xl flex items-center justify-center mb-8 shadow-lg shadow-[#12416B]/20 transform group-hover:rotate-6 transition-transform duration-300">
-                {item.icon}
+              {/* Image Frame with Scanning Laser */}
+              <div className="relative h-[65%] w-full rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white transition-all duration-700 group-hover:rounded-[2rem] group-hover:rotate-1">
+                <Image 
+                  src={item.image} 
+                  alt={`${item.title} ${item.subtitle} Essex`}
+                  fill
+                  className="object-cover transition-transform duration-[3s] group-hover:scale-125"
+                />
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#12416B]/80 opacity-60"></div>
+                
+                {/* Scanner Laser Animation */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden pointer-events-none">
+                  <div className="w-full h-[2px] bg-[#F2CF51] shadow-[0_0_20px_#F2CF51] animate-laser"></div>
+                </div>
+
+                {/* Status Indicator */}
+                <div className="absolute top-8 left-8 flex items-center gap-2 bg-[#12416B]/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
+                  <div className="w-2 h-2 rounded-full bg-[#F2CF51] animate-pulse"></div>
+                  <span className="text-white text-[8px] font-black uppercase tracking-widest">Technician Available</span>
+                </div>
               </div>
-              
-              {/* Content */}
-              <h3 className="text-2xl font-black uppercase italic text-[#12416B] mb-2 leading-none">{item.title}</h3>
-              <div className="text-[10px] font-bold text-[#F2CF51] uppercase tracking-widest mb-6">{item.tagline}</div>
-              <p className="text-slate-500 font-medium leading-relaxed text-sm">{item.description}</p>
-              
-              {/* Call to Action */}
-              <div className="mt-8 flex items-center gap-2 text-[#12416B] font-bold text-xs uppercase tracking-wider opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
-                <span>View Details</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
+
+              {/* Price Hologram Seal */}
+              <div className="absolute top-[55%] right-6 z-30 transform group-hover:scale-110 group-hover:-translate-y-4 transition-all duration-500">
+                <div className="w-28 h-28 rounded-full bg-[#F2CF51] flex flex-col items-center justify-center border-8 border-white shadow-[0_20px_40px_rgba(242,207,81,0.3)]">
+                  <span className="text-[10px] font-black text-[#12416B] uppercase leading-none mb-1 text-center">From</span>
+                  <span className="text-2xl font-black text-[#12416B] italic">£{item.price}</span>
+                </div>
               </div>
-            </Link>
+
+              {/* Glass Content Card */}
+              <div className="absolute bottom-0 left-0 right-10 bg-white/95 backdrop-blur-xl p-10 rounded-[3.5rem] shadow-[0_30px_60px_rgba(18,65,107,0.1)] border border-slate-100 transition-all duration-500 group-hover:-translate-y-6 group-hover:bg-white group-hover:shadow-2xl">
+                <div className="flex items-center gap-3 mb-6">
+                  <div className="w-10 h-10 bg-[#12416B] rounded-xl flex items-center justify-center text-xl shadow-lg transition-transform group-hover:scale-110">
+                    {item.icon}
+                  </div>
+                  <div className="h-[1px] flex-grow bg-slate-100"></div>
+                </div>
+
+                <h3 className="text-3xl font-black uppercase italic text-[#12416B] leading-none mb-1 tracking-tighter">
+                  {item.title} <span className="text-slate-200 block text-xl group-hover:text-[#F2CF51] transition-colors">{item.subtitle}</span>
+                </h3>
+                <p className="text-[#12416B]/30 text-[9px] font-black uppercase tracking-[0.4em] mb-4">
+                  {item.tagline}
+                </p>
+                <p className="text-slate-500 text-xs font-medium leading-relaxed mb-8 opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500">
+                  {item.description}
+                </p>
+
+                {/* CTA Button */}
+                <Link 
+                  href={item.path}
+                  className="group/btn relative inline-flex items-center gap-4 bg-[#12416B] text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 hover:pr-12"
+                >
+                  <span className="relative z-10">Book Inspection</span>
+                  <svg className="w-4 h-4 relative z-10 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                  <div className="absolute top-0 left-[-100%] group-hover/btn:left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] transition-all duration-700"></div>
+                </Link>
+              </div>
+            </div>
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        .text-stroke-2 {
+          -webkit-text-stroke: 1.5px #12416B;
+          color: transparent;
+        }
+        @keyframes laser {
+          0% { top: 0%; }
+          50% { top: 100%; }
+          100% { top: 0%; }
+        }
+        .animate-laser {
+          animation: laser 4s ease-in-out infinite;
+        }
+        @media (max-width: 768px) {
+          .text-stroke-2 {
+            -webkit-text-stroke: 1px #12416B;
+          }
+        }
+      `}</style>
     </section>
   );
 }

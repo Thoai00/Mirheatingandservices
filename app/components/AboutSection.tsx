@@ -10,16 +10,15 @@ export default function AboutSection() {
                         <span className="text-[#12416B] font-bold uppercase tracking-widest text-xs">Our Story</span>
                     </div>
                     <h2 className="text-4xl md:text-5xl font-black text-[#12416B] leading-tight">
-                    30 Years of <br />
+                    15+ Years of <br />
                     <span className="text-[#F2CF51]">Excellence</span> in UK Plumbing.
                     </h2>
                     <p className="text-slate-500 text-lg leading-relaxed">
-                    MIR Plumbing started as a small family operation and has grown into the region's most trusted name for complex <strong>heating and drainage services</strong>. We believe that true craftsmanship is about more than just fixing pipes; it's about respecting the homes we work in.
+                    MIR started as a small family operation and has grown into the region's most trusted name for complex <strong>heating and drainage services</strong>. We believe that true craftsmanship is about more than just fixing pipes; it's about respecting the homes we work in.
                     </p>
 
                     <div className="flex gap-8 border-t border-slate-100 pt-8 mt-8">
                         <div><div className="text-3xl font-black text-[#12416B]">2k+</div><div className="text-xs text-slate-400 uppercase tracking-wider">Jobs Done</div></div>
-                        <div><div className="text-3xl font-black text-[#12416B]">15+</div><div className="text-xs text-slate-400 uppercase tracking-wider">UK Awards</div></div>
                         <div><div className="text-3xl font-black text-[#12416B]">100%</div><div className="text-xs text-slate-400 uppercase tracking-wider">Guaranteed</div></div>
                     </div>
 

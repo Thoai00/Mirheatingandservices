@@ -1,214 +1,229 @@
+"use client";
+
+import React, { useState } from "react";
 import Image from "next/image";
-import Navbar from "../../components/Navbar"; // Adjust path if using @/ alias
+import Link from "next/link";
+import Navbar from "../../components/Navbar"; 
 import Footer from "../../components/Footer";
 
-export const metadata = {
-  title: "Central Heating Installations & Repairs | G3 Qualified Engineers",
-  description: "Expert central heating services including unvented cylinder (Megaflo) installations, system repairs, and annual servicing in London and Essex.",
-};
+// GALLERY DATA - Strictly Heating & Boilers
+const galleryImages = [
+  { id: 1, src: "/client/boiler.jpeg", category: "Boilers", alt: "New Combi Boiler Installation Essex" },
+  { id: 2, src: "/client/one.jpeg", category: "Radiators", alt: "Designer Radiator System Upgrade" },
+  { id: 3, src: "/client/boiler.jpeg", category: "Servicing", alt: "Annual Boiler Performance Check" },
+  { id: 4, src: "/client/one.jpeg", category: "Repairs", alt: "Emergency Central Heating Repair" },
+  { id: 5, src: "/client/boiler.jpeg", category: "Boilers", alt: "Full Heating System Conversion" },
+  { id: 6, src: "/client/one.jpeg", category: "Repairs", alt: "System Power Flush & Cleaning" },
+];
 
-export default function HeatingServicesPage() {
+export default function HeatingBoilerPage() {
+  const [filter, setFilter] = useState("All");
+
+  const filteredImages = filter === "All" 
+    ? galleryImages 
+    : galleryImages.filter(img => img.category === filter);
+
   return (
-    <div className="min-h-screen bg-[#E9EDF2] overflow-x-hidden font-sans text-[#12416B]">
+    <div className="min-h-screen bg-[#F0F4F8] overflow-x-hidden font-sans text-[#12416B]">
       
-      {/* --- NAVBAR --- */}
+      {/* --- SEO METADATA --- */}
+      <head>
+        <title>Boiler Installation & Heating Engineers Essex | Gas Safe Registered</title>
+        <meta name="description" content="Essex's leading heating specialists. Expert boiler installations, annual servicing, emergency breakdown repairs, and power flushing." />
+      </head>
+
       <Navbar />
 
-      {/* Main Content with top margin for fixed navbar */}
-      <main className="pt-40 pb-20 px-6 mt-10">
+      <main className="pt-32 md:pt-40 pb-24">
         
         {/* --- HERO SECTION --- */}
-        <div className="max-w-7xl mx-auto mb-24 relative">
-          <div className="relative z-10">
-              <div className="inline-block px-4 py-1 mb-4 rounded-full bg-[#F2CF51] text-[#12416B] font-black uppercase tracking-widest text-xs shadow-lg">
-                  G3 Qualified • Gas Safe
-              </div>
-              <h1 className="text-5xl md:text-8xl font-black text-[#12416B] mb-8 tracking-tighter drop-shadow-xl">
-              HEATING <br/>
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#12416B] to-[#F2CF51]">SERVICES</span>
-              </h1>
-              <p className="text-lg md:text-2xl text-slate-500 max-w-3xl leading-relaxed border-l-8 border-[#F2CF51] pl-6 md:pl-8 mb-10">
-                Our heating services include gas testing (with provided certification), gas repairs, boiler maintenance, boiler repairs, radiator installations, appliance fittings and so much more.
-              </p>
-              
-              {/* --- CTA BUTTON --- */}
-              <a href="tel:0123456789" className="inline-flex items-center gap-3 px-10 py-5 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest shadow-[0_15px_30px_rgba(18,65,107,0.3)] hover:-translate-y-1 hover:shadow-2xl transition-all duration-300 group">
-                  <span>Get A Quote</span>
-                  <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-              </a>
+        <section className="relative px-6 md:px-16 lg:px-24 mb-24 md:mb-32 overflow-visible">
+  <div className="max-w-7xl mx-auto grid lg:grid-cols-12 gap-12 items-center">
+    
+    {/* TEXT CONTENT COLUMN */}
+    <div className="lg:col-span-7 relative z-20 text-center lg:text-left">
+      <div className="inline-flex items-center gap-3 px-5 py-2 mb-8 rounded-2xl bg-white shadow-md border border-white/50 text-[#12416B] font-black uppercase tracking-[0.2em] text-[10px]">
+        <span className="w-2 h-2 rounded-full bg-[#F2CF51] animate-pulse"></span>
+        Essex Central Heating Specialists
+      </div>
+
+      {/* FIXED LINE HEIGHT (LEADING) */}
+      <h1 className="text-6xl md:text-8xl lg:text-[110px] xl:text-[130px] font-black text-[#12416B] mb-10 tracking-tighter leading-[0.85] italic uppercase relative">
+        HEATING <br/>
+        <span className="text-white drop-shadow-[4px_4px_0px_#12416B] md:drop-shadow-[8px_8px_0px_#12416B] [-webkit-text-stroke:2px_#12416B]">
+          MASTERS
+        </span>
+      </h1>
+
+      <p className="text-lg md:text-2xl text-slate-500 max-w-2xl leading-relaxed mb-12 lg:border-l-4 border-[#F2CF51] lg:pl-8 mx-auto lg:mx-0">
+        Premium <strong>boiler replacements</strong> and <strong>central heating</strong> solutions. We keep Essex homes efficient with precision engineering.
+      </p>
+
+      <div className="flex flex-col sm:flex-row flex-wrap gap-8 items-center justify-center lg:justify-start">
+        <Link 
+          href="/contact" 
+          className="w-full sm:w-auto relative px-12 py-6 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest text-sm shadow-[0_10px_30px_rgba(18,65,107,0.3)] hover:-translate-y-1 active:translate-y-1 transition-all text-center"
+        >
+          Get A Heating Quote
+        </Link>
+        
+        <div className="flex items-center gap-4">
+          <div className="flex flex-col">
+            <span className="text-[10px] font-black uppercase text-[#F2CF51] px-2 py-0.5 rounded mt-1 tracking-widest text-center">
+              Start From
+            </span>
+            <span className="text-4xl md:text-5xl font-black text-[#12416B] italic leading-none">£1450</span>
+            
           </div>
-          {/* Background decorative blob */}
-          <div className="absolute top-0 right-0 w-75 md:w-125 h-75 md:h-125 bg-[#12416B]/5 rounded-full blur-3xl z-0 pointer-events-none"></div>
+          <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest leading-tight">
+            Boiler<br/>Packages
+          </span>
         </div>
+      </div>
+    </div>
 
-        <div className="max-w-7xl mx-auto space-y-24">
-          
-          {/* --- SECTION 1: INSTALLATIONS (01 Curve) --- */}
-          <section className="relative group perspective-[2000px]">
-              <div className="relative bg-white rounded-[3rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(18,65,107,0.15)] border border-white transform transition-transform duration-500 hover:rotate-x-1 overflow-hidden">
-                  
-                  {/* 01 CURVED INDICATOR */}
-                  <div className="absolute -top-10 -right-10 w-40 h-40 md:w-56 md:h-56 bg-[#F2CF51]/10 rounded-full blur-2xl z-0"></div>
-                  <div className="absolute top-0 right-0 bg-[#F2CF51] w-24 h-24 md:w-32 md:h-32 rounded-bl-[3rem] flex items-center justify-center shadow-lg z-10">
-                      <span className="text-[#12416B] font-black text-4xl md:text-5xl">01</span>
-                  </div>
-                  
-                  <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-8 md:pt-0">
-                      <div>
-                          <h2 className="text-3xl md:text-4xl font-black uppercase mb-6 tracking-tight">Central Heating <span className="text-[#F2CF51]">Installations</span></h2>
-                          <div className="space-y-6 text-slate-500 text-base md:text-lg leading-relaxed">
-                              <p>
-                                If you are looking to get a new central heating system installed in your home, we can help you. You will be glad to know that we are <strong>Gas Safe registered</strong> and <strong>G3 Qualified</strong>.
-                              </p>
-                              <p>
-                                This means we are fully qualified to carry out any gas work and install unvented cylinders, such as Megaflo.
-                              </p>
-                          </div>
-                      </div>
-                      
-                      {/* 3D Feature Box: Unvented Cylinders */}
-                      <div className="relative bg-[#12416B] rounded-[2.5rem] p-8 md:p-10 text-white shadow-2xl transform lg:rotate-3 transition-transform hover:rotate-0">
-                          <div className="absolute -top-6 -left-6 w-14 h-14 md:w-16 md:h-16 bg-[#F2CF51] rounded-full flex items-center justify-center text-2xl md:text-3xl shadow-lg">💧</div>
-                          
-                          <h3 className="text-xl md:text-2xl font-bold uppercase italic mb-6 border-b border-white/20 pb-4 mt-2">Unvented Systems (Megaflo)</h3>
-                          
-                          <p className="mb-6 text-blue-200/80 text-sm md:text-base leading-relaxed">
-                             Unvented hot water cylinders are a great option for those experiencing hot water shortages and are looking to increase the overall performance of hot water in their home.
-                          </p>
-                           
-                          {/* --- IMAGE 1: MEGAFLO/CYLINDER --- */}
-                          <div className="relative w-full h-40 md:h-48 mb-6 rounded-xl overflow-hidden border border-white/10 bg-white/5">
-                             <Image 
-                                 src="/client/one.jpeg"
-                                 alt="Unvented Megaflo Cylinder Installation"
-                                 fill
-                                 className="object-cover opacity-90"
-                             />
-                          </div>
+    {/* IMAGE COLUMN */}
+    <div className="lg:col-span-5 relative z-10">
+      <div className="relative h-[450px] md:h-[600px] w-full rounded-[3rem] overflow-hidden shadow-2xl border-[12px] border-white transform lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
+        <Image 
+          src="/client/boiler.jpeg" 
+          alt="Essex Heating Specialist Boiler Installation" 
+          fill 
+          priority 
+          className="object-cover" 
+        />
+        {/* Subtle overlay to make white text pop if they overlap on small screens */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-[#12416B]/20 to-transparent pointer-events-none"></div>
+      </div>
+      
+      {/* Decorative background element for "Master" feel */}
+      <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-[#F2CF51] rounded-full -z-10 opacity-50 blur-2xl"></div>
+    </div>
 
-                          <div className="flex flex-col gap-3">
-                              <div className="flex items-center gap-4 bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/5">
-                                  <span className="font-bold tracking-wider uppercase text-xs md:text-sm">High Pressure Showers</span>
-                              </div>
-                              <div className="flex items-center gap-4 bg-white/10 p-3 rounded-xl backdrop-blur-sm border border-white/5">
-                                  <span className="font-bold tracking-wider uppercase text-xs md:text-sm">Balanced Hot Water Flow</span>
-                              </div>
-                          </div>
-                      </div>
+  </div>
+</section>
+
+        {/* --- REDESIGNED SERVICE CARDS --- */}
+        <section className="px-6 md:px-16 lg:px-24 mb-32">
+          <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              { id: "01", title: "Boiler Installation", desc: "Energy-efficient combi and system boiler replacements with extended warranties." },
+              { id: "02", title: "Annual Servicing", desc: "Meticulous safety checks to maintain your warranty and optimize fuel consumption." },
+              { id: "03", title: "Breakdown Repair", desc: "Rapid diagnostic and emergency fixes for all major heating brands and models." },
+              { id: "04", title: "Radiator Fitting", desc: "Installation of designer radiators, towel rails and thermostatic valve upgrades." },
+              { id: "05", title: "Power Flushing", desc: "Remove sludge and debris from your pipes to restore heat to cold radiators." },
+              { id: "06", title: "Smart Controls", desc: "Installation of Nest, Hive and Tado systems for precision climate control." }
+            ].map((service) => (
+              <div key={service.id} className="group relative bg-white p-10 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-slate-100 hover:bg-[#12416B] transition-all duration-500 overflow-hidden">
+                <div className="absolute -right-4 -top-4 text-9xl font-black text-slate-50 group-hover:text-white/5 transition-colors pointer-events-none">
+                  {service.id}
+                </div>
+                <div className="relative z-10">
+                  <div className="w-12 h-12 bg-[#F2CF51] rounded-2xl mb-6 flex items-center justify-center font-black text-[#12416B] group-hover:bg-white transition-colors">
+                    {service.id}
                   </div>
+                  <h3 className="text-2xl font-black uppercase italic mb-4 text-[#12416B] group-hover:text-[#F2CF51] transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-slate-500 group-hover:text-blue-100/80 transition-colors leading-relaxed text-sm">
+                    {service.desc}
+                  </p>
+                </div>
               </div>
-          </section>
+            ))}
+          </div>
+        </section>
 
-          {/* --- SECTION 2: REPAIRS (02 Curve) --- */}
-          <section className="relative group perspective-[2000px]">
-              <div className="absolute inset-0 bg-[#12416B] transform rotate-2 rounded-[3rem] opacity-5 translate-y-4 hidden lg:block"></div>
-
-              <div className="relative bg-[#E9EDF2] rounded-[3rem] p-8 md:p-16 border-4 border-white shadow-2xl overflow-hidden">
-                  
-                  {/* 02 CURVED INDICATOR (Top Left) */}
-                  <div className="absolute top-0 left-0 bg-[#12416B] w-24 h-24 md:w-32 md:h-32 rounded-br-[3rem] flex items-center justify-center shadow-lg z-10">
-                      <span className="text-white font-black text-4xl md:text-5xl">02</span>
-                  </div>
-                  
-                  <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center pt-12 md:pt-0">
-                      {/* Left Content (Benefits List) */}
-                      <div className="order-2 lg:order-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
-                          {[
-                              { title: "Speedy Repair", desc: "We arrive as soon as possible to fix your heating system." },
-                              { title: "Breakdown Experts", desc: "Specialists in diagnosing circulation and pump issues." },
-                              { title: "Customer Reviews", desc: "Visit our reviews page to see our 5-star feedback." }
-                          ].map((card, i) => (
-                              <div key={i} className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-md transition-shadow border-l-4 border-[#F2CF51]">
-                                  <h4 className="font-black text-[#12416B] uppercase mb-1 text-sm md:text-base">{card.title}</h4>
-                                  <p className="text-xs md:text-sm text-slate-500">{card.desc}</p>
-                              </div>
-                          ))}
-                      </div>
-
-                      <div className="order-1 lg:order-2 pl-0 md:pl-10">
-                          {/* --- IMAGE 2: HEATING REPAIR --- */}
-                          <div className="w-full h-48 md:h-64 bg-slate-200 rounded-2xl mb-6 relative overflow-hidden group-hover:scale-[1.02] transition-transform duration-500 shadow-xl border border-white/50">
-                             <Image 
-                                 src="/client/one.jpeg"
-                                 alt="Engineer repairing heating system"
-                                 fill
-                                 className="object-cover"
-                             />
-                          </div>
-                          
-                          <h2 className="text-3xl md:text-4xl font-black uppercase mb-6 tracking-tight">Central Heating <span className="text-[#F2CF51]">Repairs</span></h2>
-                          <div className="space-y-6 text-slate-500 text-base md:text-lg leading-relaxed">
-                              <p>
-                                If you experience a central heating breakdown and would like us to come and help get your hot water and heating running again, get in touch.
-                              </p>
-                              <p>
-                                We will get there as soon as possible and fix your central heating system. Customers appreciate our speedy repair service.
-                              </p>
-                          </div>
-                      </div>
-                  </div>
+        {/* --- SYSTEM SHOWCASE WITH CATEGORY FILTER --- */}
+        <section className="px-6 md:px-16 lg:px-24 mb-32">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-12">
+              <div>
+                <h2 className="text-5xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B]">
+                  System <span className="text-[#F2CF51] [-webkit-text-stroke:1px_#12416B]">Showcase</span>
+                </h2>
+                <p className="text-slate-400 uppercase tracking-widest text-[10px] font-bold mt-2">Our Recent Central Heating Projects</p>
               </div>
-          </section>
 
-          {/* --- SECTION 3: SERVICING (Dark Card) --- */}
-          <section className="relative perspective-[2000px]">
-              <div className="relative bg-[#12416B] rounded-[3rem] p-8 md:p-16 text-white overflow-hidden shadow-[0_50px_100px_-20px_rgba(18,65,107,0.4)]">
-                  {/* Abstract Background Patterns */}
-                  <div className="absolute top-0 right-0 w-75 md:w-150 h-75 md:h-150 bg-[#F2CF51] rounded-full blur-[150px] opacity-10 pointer-events-none"></div>
-                  
-                  <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16">
-                      <div>
-                          {/* --- IMAGE 3: SERVICING --- */}
-                          <div className="w-full h-48 md:h-64 bg-white/10 rounded-2xl mb-8 relative border border-white/10 overflow-hidden shadow-xl">
-                             <Image 
-                                 src="/client/one.jpeg"
-                                 alt="Heating engineer servicing system"
-                                 fill
-                                 className="object-cover opacity-80"
-                             />
-                          </div>
-
-                          <div className="inline-block mb-4 text-[#F2CF51] font-black uppercase tracking-[0.3em] text-xs md:text-sm">Preventative Care</div>
-                          <h2 className="text-4xl md:text-5xl font-black uppercase mb-8 tracking-tight leading-none">
-                              Heating <br/> <span className="text-transparent bg-clip-text bg-linear-to-r from-[#F2CF51] to-white">Servicing</span>
-                          </h2>
-                          <p className="text-blue-100/70 text-base md:text-lg leading-relaxed mb-8">
-                             Keep your central heating system in excellent condition by getting it annually serviced. We offer central heating servicing checks throughout London and surrounding areas.
-                          </p>
-                      </div>
-
-                      <div className="bg-white/5 backdrop-blur-md rounded-[2.5rem] border border-white/10 p-8 md:p-10 flex flex-col justify-center">
-                          <h3 className="text-xl md:text-2xl font-bold uppercase italic mb-8 text-[#F2CF51]">Why Service Annually?</h3>
-                          
-                          <p className="text-blue-100/80 mb-8 leading-relaxed">
-                            A service check will detect any faults with your central heating system, meaning it can be fixed straight away and prevents it from breaking down later on.
-                          </p>
-
-                          <div className="space-y-6">
-                              {[
-                                  { title: "Detect Faults Early", icon: "🔍" },
-                                  { title: "Prevent Breakdowns", icon: "🛡️" },
-                                  { title: "Ensure Efficiency", icon: "⚡" }
-                              ].map((item, i) => (
-                                  <div key={i} className="flex items-center gap-6 group cursor-pointer">
-                                      <div className="w-12 h-12 rounded-2xl bg-[#F2CF51] text-[#12416B] flex items-center justify-center font-black text-xl shadow-[0_0_15px_rgba(242,207,81,0.2)] group-hover:scale-110 transition-transform">
-                                          {item.icon}
-                                      </div>
-                                      <h4 className="font-bold text-white uppercase tracking-wider text-sm md:text-base group-hover:text-[#F2CF51] transition-colors">{item.title}</h4>
-                                  </div>
-                              ))}
-                          </div>
-                      </div>
-                  </div>
+              {/* Category Filter Menu */}
+              <div className="flex flex-wrap gap-2 bg-white p-2 rounded-2xl shadow-sm border border-slate-100">
+                {["All", "Boilers", "Radiators", "Servicing", "Repairs"].map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setFilter(cat)}
+                    className={`px-6 py-2 rounded-xl text-[10px] font-black uppercase transition-all ${
+                      filter === cat 
+                      ? "bg-[#12416B] text-[#F2CF51] shadow-md" 
+                      : "text-slate-400 hover:text-[#12416B]"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
               </div>
-          </section>
+            </div>
 
-        </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredImages.map((img) => (
+                <div key={img.id} className="group relative h-[400px] rounded-[2.5rem] overflow-hidden shadow-lg border-4 border-white transition-all hover:border-[#F2CF51]">
+                  <Image src={img.src} alt={img.alt} fill className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#12416B] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-8">
+                    <p className="text-white font-black uppercase italic text-lg leading-tight">{img.alt}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* --- EXPERT SECTION: IMAGE AT BOTTOM ON MOBILE --- */}
+        <section className="px-6 md:px-16 lg:px-24 mb-32">
+          <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            {/* Text Content - Renders first in DOM */}
+            <div className="text-center lg:text-left">
+              <h2 className="text-4xl md:text-5xl font-black uppercase italic mb-8 tracking-tighter text-[#12416B]">
+                Expert Heating Engineers <br/>
+                <span className="text-[#F2CF51]">Serving All Essex</span>
+              </h2>
+              <div className="space-y-6 text-slate-500 text-lg leading-relaxed">
+                <p>Is your central heating struggling? Our Essex-based <strong>heating engineers</strong> specialize in reviving inefficient systems. From noisy boilers to inconsistent hot water, we provide expert diagnostics.</p>
+                <p>By focusing on <strong>system efficiency</strong>, we optimize your boiler to reduce monthly energy bills. We provide future-proof home comfort for local residents.</p>
+              </div>
+            </div>
+
+            {/* Image - Renders second (appears bottom on mobile) */}
+            <div className="relative rounded-[3rem] overflow-hidden h-[350px] md:h-[500px] shadow-2xl border-8 border-white lg:rotate-1">
+              <Image src="/client/one.jpeg" alt="Essex Heating Maintenance Service" fill className="object-cover" />
+            </div>
+          </div>
+        </section>
+
+        {/* --- PRICING BOX --- */}
+        <section className="px-4 md:px-16 lg:px-24">
+          <div className="max-w-5xl mx-auto bg-[#12416B] rounded-[3rem] md:rounded-[5rem] overflow-hidden shadow-2xl flex flex-col md:flex-row border-[8px] border-white">
+            <div className="md:w-2/3 p-10 md:p-16 text-white">
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-6">Boiler <span className="text-[#F2CF51]">Service</span></h2>
+              <p className="text-blue-100/60 mb-8 uppercase tracking-widest text-xs font-bold italic text-center md:text-left">Full Safety & Performance Audit</p>
+              <div className="grid grid-cols-2 gap-4 text-[10px] md:text-xs font-bold uppercase tracking-tighter">
+                <p>✓ Flue Gas Analysis</p>
+                <p>✓ Component Cleaning</p>
+                <p>✓ Leak Inspection</p>
+                <p>✓ Warranty Validation</p>
+              </div>
+            </div>
+            <div className="md:w-1/3 bg-[#F2CF51] p-10 flex flex-col items-center justify-center text-[#12416B]">
+              <span className="font-black uppercase text-[10px] mb-2 text-center">From Only</span>
+              <div className="text-7xl font-black italic mb-8">£1450</div>
+              <Link href="/contact" className="bg-[#12416B] text-white px-8 py-4 rounded-xl font-black uppercase text-xs hover:scale-105 transition-transform text-center w-full md:w-auto">
+                Book Service
+              </Link>
+            </div>
+          </div>
+        </section>
+
       </main>
 
-      {/* --- FOOTER --- */}
       <Footer />
-      
     </div>
   );
 }

@@ -9,9 +9,9 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const servicesLinks = [
-    { name: "Gas Services", path: "/services/gas-services" },
+     { name: "Boiler Specialist", path: "/services/heating-services" },
     { name: "Plumbing Services", path: "/services/plumbing-services" },
-    { name: "Heating Services", path: "/services/heating-services" }
+    { name: "Gas & Safety", path: "/services/gas-services" },
   ];
 
   const mainLinks = [
@@ -56,7 +56,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <a href="tel:0123456789" className="rounded-2xl bg-[#12416B] px-8 py-4 text-[#F2CF51] shadow-[0_15px_30px_rgba(18,65,107,0.3),inset_0_-4px_0_rgba(0,0,0,0.2)] hover:-translate-y-1 active:translate-y-px transition-all">
+            <a href="tel:07771119401" className="rounded-2xl bg-[#12416B] px-8 py-4 text-[#F2CF51] shadow-[0_15px_30px_rgba(18,65,107,0.3),inset_0_-4px_0_rgba(0,0,0,0.2)] hover:-translate-y-1 active:translate-y-px transition-all">
                 GET A QUOTE
             </a>
           </div>
@@ -109,7 +109,7 @@ export default function Navbar() {
                  ))}
                  
                  <div className="w-full h-px bg-white/10 my-2"></div>
-                 <a href="tel:0123456789" className="bg-[#F2CF51] text-[#12416B] font-black py-4 rounded-xl uppercase tracking-widest shadow-lg">
+                 <a href="tel:07771119401" className="bg-[#F2CF51] text-[#12416B] font-black py-4 rounded-xl uppercase tracking-widest shadow-lg">
                    GET A QUOTE
                  </a>
               </div>

@@ -1,136 +1,186 @@
+"use client";
+
+import React from "react";
 import Image from "next/image";
 import Navbar from "../components/Navbar"; 
 import Footer from "../components/Footer";
 
-export const metadata = {
-  title: "About MIR Plumbing & Heating | Trusted UK Company",
-  description: "Learn about our history, our team of qualified engineers, and our commitment to customer satisfaction.",
-};
+const CONTACT_NUMBER = "0777 111 9401";
+const DIAL_NUMBER = "07771119401";
+const SERVICES = [
+  { title: "Gas Safety Inspection", desc: "Certified CP12 landlord safety certificates and home buyer inspections." },
+  { title: "Boiler Services", desc: "Annual maintenance to ensure high-efficiency performance and warranty protection." },
+  { title: "Gas Cooker & Hob", desc: "Professional installation and testing of gas-powered kitchen appliances." },
+  { title: "Gas Escape Detection", desc: "Emergency trace and access for gas leaks to secure your property immediately." },
+  { title: "Boiler Breakdown", desc: "Rapid response repair for all major brands including Worcester Bosch and Vaillant." },
+  { title: "Radiator Experts", desc: "Installation of designer radiators and repair of central heating distribution." },
+  { title: "Hot & Cold Water", desc: "Installation and repair of sinks, taps, and high-pressure water systems." },
+  { title: "Pipework & Infrastructure", desc: "Full copper and plastic pipework solutions for new builds and renovations." }
+];
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-[#E9EDF2] overflow-x-hidden font-sans text-[#12416B]">
+    <div className="min-h-screen bg-[#F8FAFC] overflow-x-hidden font-sans text-[#12416B]">
       
-      {/* --- NAVBAR --- */}
       <Navbar />
 
-      {/* Main Content */}
-      <main className="pt-40 pb-20 px-6 mt-10">
+      {/* Increased horizontal padding for mobile (px-6) and scaled for larger screens */}
+      <main className="pt-32 md:pt-48 pb-24 px-6 md:px-12 lg:px-20">
         
         {/* --- HERO SECTION --- */}
-        <div className="max-w-7xl mx-auto mb-24 relative">
-          <div className="relative z-10">
-              <div className="inline-block px-4 py-1 mb-4 rounded-full bg-[#F2CF51] text-[#12416B] font-black uppercase tracking-widest text-xs shadow-lg">
-                  Est. 1995
-              </div>
-              <h1 className="text-5xl md:text-8xl font-black text-[#12416B] mb-8 tracking-tighter drop-shadow-xl">
-              ABOUT <br/>
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-[#12416B] to-[#F2CF51]">MIR PLUMBING</span>
-              </h1>
-              <p className="text-lg md:text-2xl text-slate-500 max-w-3xl leading-relaxed border-l-8 border-[#F2CF51] pl-6 md:pl-8 mb-10">
-                With over 30 years of experience, MIR Plumbing & Heating has established itself as a leader in the industry, built on trust, transparency, and technical excellence across the UK.
-              </p>
+        <section className="max-w-7xl mx-auto mb-20 text-center lg:text-left">
+          <div className="inline-flex items-center gap-3 px-5 py-2 mb-6 rounded-full bg-[#12416B] text-[#F2CF51] font-black uppercase tracking-[0.2em] text-[10px]">
+            Mastering UK Infrastructure
           </div>
-          {/* Background decorative blob */}
-          <div className="absolute top-0 right-0 w-75 md:w-125 h-75 md:h-125 bg-[#12416B]/5 rounded-full blur-3xl z-0 pointer-events-none"></div>
-        </div>
+          {/* Adjusted font sizes for mobile to prevent overflow */}
+          <h1 className="text-5xl md:text-9xl font-black text-[#12416B] tracking-tighter uppercase leading-[0.85] md:leading-[0.8] italic mb-8">
+            ENGINEERING <br/>
+            <span className="text-white drop-shadow-[2px_2px_0px_#12416B] md:drop-shadow-[4px_4px_0px_#12416B] [-webkit-text-stroke:1px_#12416B] md:[-webkit-text-stroke:1.5px_#12416B]">EXCELLENCE</span>
+          </h1>
+        </section>
 
-        <div className="max-w-7xl mx-auto space-y-24">
-
-          {/* --- SECTION 1: WHO WE ARE (3D Card) --- */}
-          <section className="relative group perspective-[2000px]">
-              <div className="relative bg-white rounded-[3rem] p-8 md:p-16 shadow-[0_30px_60px_-15px_rgba(18,65,107,0.15)] border border-white transform transition-transform duration-500 hover:rotate-x-1 overflow-hidden">
-                  
-                  <div className="relative z-10 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-                      {/* Image Section */}
-                      <div className="relative w-full h-64 md:h-96 rounded-[2.5rem] overflow-hidden shadow-2xl border-4 border-white transform lg:-rotate-2 hover:rotate-0 transition-transform duration-500">
-                          <Image 
-                             src="/client/one.jpeg" 
-                             alt="MIR Plumbing Team" 
-                             fill 
-                             className="object-cover"
-                          />
-                          {/* Badge */}
-                          <div className="absolute bottom-6 right-6 w-24 h-24 bg-[#F2CF51] rounded-full flex flex-col items-center justify-center text-[#12416B] font-black shadow-lg animate-bounce-slow">
-                              <span className="text-2xl leading-none">30</span>
-                              <span className="text-[10px] uppercase tracking-wider">Years</span>
-                          </div>
-                      </div>
-
-                      {/* Content Section */}
-                      <div>
-                          <h2 className="text-3xl md:text-4xl font-black uppercase mb-6 tracking-tight">Our <span className="text-[#F2CF51]">Heritage</span></h2>
-                          <div className="space-y-6 text-slate-500 text-base md:text-lg leading-relaxed">
-                              <p>
-                                Founded in the heart of the community, MIR Plumbing began as a small, family-run operation dedicated to fixing leaks and keeping homes warm during British winters.
-                              </p>
-                              <p>
-                                Today, we have expanded into a premier building and engineering firm. Despite our growth, we have never lost sight of our core values: <strong>honesty, punctuality, and pride in our work</strong>. We treat every property—whether it’s a studio flat in London or a detached home in Essex—with the same level of respect.
-                              </p>
-                              <p>
-                                We are fully insured, <strong>Gas Safe Registered</strong>, and committed to British Standards in every installation we undertake.
-                              </p>
-                          </div>
-                      </div>
-                  </div>
+        {/* --- SECTION 1: THE JOURNEY --- */}
+        <section className="max-w-7xl mx-auto mb-32 md:mb-48">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Content */}
+            <div className="order-2 lg:order-1">
+              <div className="inline-block px-4 py-1 mb-4 rounded bg-[#F2CF51] text-[#12416B] font-black uppercase text-[10px] tracking-widest">
+                Our History
               </div>
-          </section>
-
-          {/* --- SECTION 2: WHY CHOOSE US (Grid) --- */}
-          <section>
-            <div className="text-center mb-16">
-               <h2 className="text-4xl md:text-5xl font-black uppercase text-[#12416B] mb-4">The MIR <span className="text-[#F2CF51]">Difference</span></h2>
-               <p className="text-slate-500 max-w-2xl mx-auto text-lg">We don't just fix problems; we provide long-term solutions.</p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               {[
-                 { title: "Gas Safe Registered", icon: "🔥", desc: "Our engineers hold full accreditation, ensuring your boiler and gas appliances are legally and safely maintained." },
-                 { title: "Transparent Pricing", icon: "💷", desc: "No hidden fees or surprise costs. We provide clear, written quotes before any work begins." },
-                 { title: "Local Experts", icon: "📍", desc: "Based locally, we understand the specific plumbing and heating needs of UK properties and infrastructure." }
-               ].map((item, i) => (
-                  <div key={i} className="bg-white p-10 rounded-[2.5rem] shadow-lg border border-white/50 hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 group text-center">
-                      <div className="w-20 h-20 bg-[#12416B] rounded-full mx-auto flex items-center justify-center text-4xl mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300 border-4 border-[#F2CF51]">
-                         {item.icon}
-                      </div>
-                      <h3 className="text-xl font-black uppercase text-[#12416B] mb-4">{item.title}</h3>
-                      <p className="text-slate-500 leading-relaxed">{item.desc}</p>
-                  </div>
-               ))}
-            </div>
-          </section>
-
-          {/* --- SECTION 3: ACCREDITATIONS (Dark Section) --- */}
-          <section className="relative perspective-[2000px]">
-              <div className="relative bg-[#12416B] rounded-[3rem] p-10 md:p-20 text-white overflow-hidden shadow-[0_50px_100px_-20px_rgba(18,65,107,0.4)] text-center">
-                  {/* Abstract Background Patterns */}
-                  <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10"></div>
-                  
-                  <div className="relative z-10">
-                      <h2 className="text-3xl md:text-5xl font-black uppercase mb-8 tracking-tight">
-                          Certified <span className="text-[#F2CF51]">&</span> Qualified
-                      </h2>
-                      <p className="text-blue-100/70 text-lg max-w-3xl mx-auto mb-12">
-                          We take safety seriously. Our team undergoes rigorous training and annual assessments to ensure we remain at the forefront of the industry standards.
-                      </p>
-                      
-                      <div className="flex flex-wrap justify-center gap-4 md:gap-8">
-                          {["Gas Safe Registered", "G3 Unvented Certified", "City & Guilds Qualified", "Public Liability Insured"].map((tag, i) => (
-                              <div key={i} className="px-8 py-4 bg-white/10 backdrop-blur-md rounded-2xl border border-white/10 font-bold uppercase tracking-widest text-sm hover:bg-[#F2CF51] hover:text-[#12416B] transition-colors cursor-default">
-                                  {tag}
-                              </div>
-                          ))}
-                      </div>
-                  </div>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic text-[#12416B] mb-8 leading-[0.9]">
+                The MIR <br/><span className="text-[#F2CF51]">Journey</span>
+              </h2>
+              <div className="space-y-6 text-slate-500 text-lg md:text-xl leading-relaxed">
+                <p>
+                  Established over 15 years ago, MIR Plumbing & Heating began with a mission to bring high-level engineering standards to domestic properties across the <strong>UK</strong>. What started as a local Essex-based repair service has evolved into a premier firm recognized for technical excellence in <strong>London</strong> and beyond.
+                </p>
+                <p>
+                  Our history is built on the foundation of <strong>2,000+ successfully delivered jobs</strong>, ranging from high-efficiency boiler installations to complex gas safety infrastructure.
+                </p>
               </div>
-          </section>
+            </div>
+            {/* Image - Adjusted shadow for mobile */}
+            <div className="order-1 lg:order-2">
+              <div className="relative h-87.5 md:h-137.5 w-full rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-[15px_15px_0px_0px_rgba(18,65,107,1)] md:shadow-[30px_30px_0px_0px_rgba(18,65,107,1)] border-4 border-[#12416B]">
+                <Image 
+                  src="/client/one.jpeg" 
+                  alt="MIR Plumbing Engineering History" 
+                  fill 
+                  className="object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          </div>
+        </section>
 
-        </div>
+        {/* --- SECTION 2: THE MISSION --- */}
+        <section className="max-w-7xl mx-auto mb-32 md:mb-48">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            {/* Image - Adjusted shadow for mobile */}
+            <div className="relative h-87.5 md:h-137.5 w-full rounded-[2.5rem] md:rounded-[3rem] overflow-hidden shadow-[-15px_15px_0px_0px_rgba(242,207,81,1)] md:shadow-[-30px_30px_0px_0px_rgba(242,207,81,1)] border-4 border-[#F2CF51]">
+              <Image 
+                src="/client/three.jpeg" 
+                alt="MIR Plumbing Mission and Safety" 
+                fill 
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
+            {/* Content */}
+            <div className="mt-8 lg:mt-0">
+              <div className="inline-block px-4 py-1 mb-4 rounded bg-[#12416B] text-white font-black uppercase text-[10px] tracking-widest">
+                Our Standard
+              </div>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic text-[#12416B] mb-8 leading-[0.9]">
+                Our <br/><span className="text-[#F2CF51]">Mission</span>
+              </h2>
+              <div className="space-y-6 text-slate-500 text-lg md:text-xl leading-relaxed">
+                <p>
+                  Our mission is simple: To provide the most reliable heating and plumbing services in the UK through continuous education and rigorous safety standards.
+                </p>
+                <p>
+                  We aim to reduce the carbon footprint of UK homes by installing the latest energy-efficient technologies, helping our clients in <strong>Essex and London</strong> save on energy bills.
+                </p>
+              </div>
+              <div className="mt-10">
+                <a 
+                  href={`tel:${DIAL_NUMBER}`}
+                  className="inline-flex w-full md:w-auto justify-center items-center gap-4 px-10 py-5 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest hover:bg-[#12416B]/90 transition-all shadow-xl"
+                >
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                  {CONTACT_NUMBER}
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- STATS STRIP --- */}
+        <section className="max-w-7xl mx-auto mb-32">
+          <div className="bg-[#12416B] rounded-[2.5rem] md:rounded-[3rem] p-8 md:p-16 grid grid-cols-1 md:grid-cols-3 gap-10 text-center">
+            <div>
+              <div className="text-[#F2CF51] text-5xl font-black italic mb-2">15+</div>
+              <div className="text-white font-bold uppercase tracking-widest text-[10px]">Years Experience</div>
+            </div>
+            <div className="border-y md:border-y-0 md:border-x border-white/10 py-10 md:py-0">
+              <div className="text-[#F2CF51] text-5xl font-black italic mb-2">2K+</div>
+              <div className="text-white font-bold uppercase tracking-widest text-[10px]">Jobs Completed</div>
+            </div>
+            <div>
+              <div className="text-[#F2CF51] text-5xl font-black italic mb-2">100%</div>
+              <div className="text-white font-bold uppercase tracking-widest text-[10px]">Gas Safe Certified</div>
+            </div>
+          </div>
+        </section>
+
+        {/* --- DETAILED SERVICES GRID --- */}
+        <section className="max-w-7xl mx-auto mb-32">
+           <div className="text-center mb-16 px-2">
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic text-[#12416B]">Our <span className="text-[#F2CF51]">Expertise</span></h2>
+              <p className="text-slate-400 font-bold uppercase tracking-[0.2em] md:tracking-[0.3em] mt-4 text-[10px] md:text-sm">Full-Spectrum Engineering Solutions</p>
+           </div>
+           
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+              {SERVICES.map((item, i) => (
+                <div key={i} className="bg-white p-6 md:p-8 rounded-4xl border-2 border-slate-50 hover:border-[#F2CF51] transition-all group">
+                   <div className="text-2xl font-black text-slate-100 group-hover:text-[#F2CF51] mb-4 transition-colors">0{i+1}</div>
+                   <h3 className="text-[#12416B] font-black uppercase text-sm mb-3 tracking-wider leading-tight">{item.title}</h3>
+                   <p className="text-slate-400 text-xs leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+           </div>
+        </section>
+
+        {/* --- FINAL CONVERSION SECTION --- */}
+        <section className="max-w-7xl mx-auto">
+           <div className="bg-[#12416B] rounded-[2.5rem] md:rounded-[3.5rem] p-8 md:p-24 text-center relative overflow-hidden shadow-2xl">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent"></div>
+              
+              <h2 className="text-4xl md:text-7xl font-black text-white uppercase italic tracking-tighter mb-8 relative z-10">
+                Ready to Secure <br className="hidden md:block"/>Your Home?
+              </h2>
+              <p className="text-blue-100/60 max-w-2xl mx-auto text-lg md:text-xl mb-12 relative z-10 px-4">
+                Don't wait for a breakdown. Join 2,000+ satisfied clients in <strong>Essex and London</strong>.
+              </p>
+              
+              <a 
+                href={`tel:${DIAL_NUMBER}`}
+                className="inline-flex w-full md:w-auto items-center justify-center gap-5 px-10 md:px-14 py-6 md:py-7 bg-[#F2CF51] text-[#12416B] rounded-2xl md:rounded-3xl font-black uppercase tracking-widest md:tracking-[0.2em] text-xs md:text-sm hover:scale-105 transition-all shadow-[0_20px_50px_rgba(242,207,81,0.3)] relative z-10"
+              >
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 006.59 6.59l2.2-2.2a1 1 0 011.11-.27 11.72 11.72 0 003.7.59 1 1 0 011 1V20a1 1 0 01-1 1A15 15 0 013 6a1 1 0 011-1h3.41a1 1 0 011 1 11.72 11.72 0 00.59 3.7 1 1 0 01-.27 1.11l-2.2 2.2z"/></svg>
+                Call Engineer Now
+              </a>
+              
+              <div className="mt-12 flex justify-center items-center gap-4 md:gap-8">
+                <div className="h-px w-8 md:w-12 bg-white/20"></div>
+                <span className="text-[10px] font-black uppercase tracking-[0.3em] md:tracking-[0.5em] text-white/30 italic">UK Certified</span>
+                <div className="h-px w-8 md:w-12 bg-white/20"></div>
+              </div>
+           </div>
+        </section>
+
       </main>
 
-      {/* --- FOOTER --- */}
       <Footer />
-      
     </div>
   );
 }
