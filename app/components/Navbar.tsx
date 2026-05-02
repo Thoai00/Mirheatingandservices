@@ -9,9 +9,9 @@ export default function Navbar() {
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
 
   const servicesLinks = [
-     { name: "Boiler Specialist", path: "/services/heating-services" },
-    { name: "Plumbing Services", path: "/services/plumbing-services" },
-    { name: "Gas & Safety", path: "/services/gas-services" },
+     { name: "Gas Safety Certificate (CP12)", path: "/services/gas-services" },
+    { name: "Boiler Services & Repair", path: "/services/heating-services" },
+    { name: "Boiler Supply & Installation", path: "/services/boiler-install" },
   ];
 
   const mainLinks = [

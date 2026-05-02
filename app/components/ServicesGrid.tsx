@@ -3,10 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import { servicesData } from "./mockdata"; // ← static data
 
 export default function ServicesGrid() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
+  // Interactive grid mouse tracker
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePos({ x: e.clientX, y: e.clientY });
@@ -15,115 +17,88 @@ export default function ServicesGrid() {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  const services = [
-    {
-      title: "Boiler",
-      subtitle: "Specialist",
-      icon: "🔥",
-      tagline: "COMBI BOILER SUPPLY & INSTALL",
-      price: "1,450",
-      image: "/client/boiler.jpeg", 
-      description: "Premium combi boiler supply and installation from £1450. We handle full boiler services, expert breakdown repairs, and high-efficiency upgrades across Essex.",
-      path: "/services/heating-services"
-    },
-    {
-      title: "Gas &",
-      subtitle: "Safety",
-      icon: "🛡️",
-      tagline: "Certified Gas Engineering",
-      price: "1,450",
-      image: "/client/two.jpeg", 
-      description: "Gas Safe registered inspections, leak detection, and emergency gas escape repairs. Professional installation for gas cookers and hobs with full safety certification.",
-      path: "/services/gas-services"
-    },
-    {
-      title: "Plumbing &",
-      subtitle: "Fixing",
-      icon: "💧",
-      tagline: "Full System Maintenance",
-      price: "1,450",
-      image: "/client/4.jpeg",
-      description: "Specialist radiator repair and installation. From pipework and leaks to sinks, taps, and hot/cold water systems, we provide precision plumbing solutions.",
-      path: "/services/plumbing-services"
-    }
-  ];
+  // No fetch needed – data comes straight from mockData
+  const services = servicesData;
 
-  // SEO SCHEMA DATA
+  // SEO SCHEMA (generated from static data)
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "name": "Essex Plumbing & Heating Specialists",
-    "address": {
+    name: "Essex Plumbing & Heating Specialists",
+    address: {
       "@type": "PostalAddress",
-      "addressRegion": "Essex",
-      "addressCountry": "GB"
+      addressRegion: "Essex",
+      addressCountry: "GB",
     },
-    "hasOfferCatalog": {
+    hasOfferCatalog: {
       "@type": "OfferCatalog",
-      "name": "Engineering Services",
-      "itemListElement": services.map((s, i) => ({
+      name: "Engineering Services",
+      itemListElement: services.map((s) => ({
         "@type": "Offer",
-        "itemOffered": {
+        itemOffered: {
           "@type": "Service",
-          "name": `${s.title} ${s.subtitle} Essex`
+          name: `${s.title} ${s.subtitle} Essex`,
         },
-        "price": s.price.replace(',', ''),
-        "priceCurrency": "GBP"
-      }))
-    }
+        price: s.price?.replace(",", ""),
+        priceCurrency: "GBP",
+      })),
+    },
   };
 
   return (
-    <section className="py-32 px-4 bg-white relative overflow-hidden group/section" id="services">
-      {/* Schema Injection */}
+    <section
+      className="py-32 px-4 bg-white relative overflow-hidden group/section"
+      id="services"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      
+
       {/* GLOBAL INTERACTIVE GRID */}
-      <div 
+      <div
         className="absolute inset-0 pointer-events-none opacity-[0.15]"
         style={{
           backgroundImage: `radial-gradient(circle at ${mousePos.x}px ${mousePos.y}px, #F2CF51 0%, transparent 400px), 
                             radial-gradient(#12416B 1px, transparent 1px)`,
-          backgroundSize: '100% 100%, 40px 40px'
+          backgroundSize: "100% 100%, 40px 40px",
         }}
       />
 
       <div className="mx-auto max-w-7xl relative z-10">
-        
-        {/* Header Section */}
+        {/* Header */}
         <div className="relative mb-32 flex flex-col items-center">
           <div className="flex items-center gap-4 mb-4">
             <span className="h-[2px] w-12 bg-[#12416B]"></span>
-            <span className="text-[#12416B] font-black uppercase tracking-[0.6em] text-[10px]">Premium Essex Engineering</span>
+            <span className="text-[#12416B] font-black uppercase tracking-[0.6em] text-[10px]">
+              Premium Essex Engineering
+            </span>
             <span className="h-[2px] w-12 bg-[#12416B]"></span>
           </div>
           <h2 className="text-[#12416B] text-6xl md:text-9xl font-black uppercase italic leading-none tracking-tighter text-center">
             EXPERT <span className="text-stroke-2">SERVICES</span>
           </h2>
           <p className="mt-8 text-slate-500 font-bold uppercase tracking-[0.2em] text-[11px] max-w-md text-center leading-relaxed">
-            From emergency gas repairs to bespoke boiler installations. The standard in local engineering for modern Essex homes.
+            From emergency gas repairs to bespoke boiler installations. The standard in local
+            engineering for modern Essex homes.
           </p>
         </div>
 
-        {/* The Service Card Grid */}
+        {/* Service Card Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-16 lg:gap-12">
-          {services.map((item, i) => (
-            <div key={i} className="group relative flex flex-col h-[700px]">
-              
-              {/* Image Frame with Scanning Laser */}
+          {services.map((item) => (
+            <div key={item.id} className="group relative flex flex-col h-[700px]">
+              {/* Image Frame */}
               <div className="relative h-[65%] w-full rounded-[4rem] overflow-hidden shadow-2xl border-4 border-white transition-all duration-700 group-hover:rounded-[2rem] group-hover:rotate-1">
-                <Image 
-                  src={item.image} 
+                <Image
+                  src={item.image_path}
                   alt={`${item.title} ${item.subtitle} Essex`}
                   fill
                   className="object-cover transition-transform duration-[3s] group-hover:scale-125"
                 />
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#12416B]/80 opacity-60"></div>
-                
-                {/* Scanner Laser Animation */}
+
+                {/* Scanner Laser */}
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 overflow-hidden pointer-events-none">
                   <div className="w-full h-[2px] bg-[#F2CF51] shadow-[0_0_20px_#F2CF51] animate-laser"></div>
                 </div>
@@ -131,14 +106,18 @@ export default function ServicesGrid() {
                 {/* Status Indicator */}
                 <div className="absolute top-8 left-8 flex items-center gap-2 bg-[#12416B]/80 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
                   <div className="w-2 h-2 rounded-full bg-[#F2CF51] animate-pulse"></div>
-                  <span className="text-white text-[8px] font-black uppercase tracking-widest">Technician Available</span>
+                  <span className="text-white text-[8px] font-black uppercase tracking-widest">
+                    Technician Available
+                  </span>
                 </div>
               </div>
 
-              {/* Price Hologram Seal */}
+              {/* Price Seal */}
               <div className="absolute top-[55%] right-6 z-30 transform group-hover:scale-110 group-hover:-translate-y-4 transition-all duration-500">
                 <div className="w-28 h-28 rounded-full bg-[#F2CF51] flex flex-col items-center justify-center border-8 border-white shadow-[0_20px_40px_rgba(242,207,81,0.3)]">
-                  <span className="text-[10px] font-black text-[#12416B] uppercase leading-none mb-1 text-center">From</span>
+                  <span className="text-[10px] font-black text-[#12416B] uppercase leading-none mb-1 text-center">
+                    From
+                  </span>
                   <span className="text-2xl font-black text-[#12416B] italic">£{item.price}</span>
                 </div>
               </div>
@@ -153,7 +132,10 @@ export default function ServicesGrid() {
                 </div>
 
                 <h3 className="text-3xl font-black uppercase italic text-[#12416B] leading-none mb-1 tracking-tighter">
-                  {item.title} <span className="text-slate-200 block text-xl group-hover:text-[#F2CF51] transition-colors">{item.subtitle}</span>
+                  {item.title}{" "}
+                  <span className="text-slate-200 block text-xl group-hover:text-[#F2CF51] transition-colors">
+                    {item.subtitle}
+                  </span>
                 </h3>
                 <p className="text-[#12416B]/30 text-[9px] font-black uppercase tracking-[0.4em] mb-4">
                   {item.tagline}
@@ -162,14 +144,23 @@ export default function ServicesGrid() {
                   {item.description}
                 </p>
 
-                {/* CTA Button */}
-                <Link 
+                <Link
                   href={item.path}
                   className="group/btn relative inline-flex items-center gap-4 bg-[#12416B] text-white px-8 py-4 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] overflow-hidden transition-all duration-300 hover:pr-12"
                 >
                   <span className="relative z-10">Book Inspection</span>
-                  <svg className="w-4 h-4 relative z-10 transform group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  <svg
+                    className="w-4 h-4 relative z-10 transform group-hover/btn:translate-x-1 transition-transform"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="3"
+                      d="M14 5l7 7m0 0l-7 7m7-7H3"
+                    />
                   </svg>
                   <div className="absolute top-0 left-[-100%] group-hover/btn:left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] transition-all duration-700"></div>
                 </Link>

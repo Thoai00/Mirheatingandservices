@@ -7,47 +7,23 @@ import Footer from "../../components/Footer";
 import BookingPopup from "../../components/BookingPopup";
 import { servicePagesData, portfolioProjects, portfolioSubMap } from "../../components/mockdata"; // ← static data
 
-const GAS_MAIN_CATEGORY = "Gas Safety Certificate (CP12)";
+const BOILER_INSTALL_MAIN_CATEGORY = "Boiler Supply & Installation";
 const PAGE_SIZE = 6;
 
 // ── SVG ICONS ─────────────────────────────────────────────────────────────────
-const IconCertificate = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
+const IconBox = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-    <polyline points="14 2 14 8 20 8"/>
-    <line x1="16" y1="13" x2="8" y2="13"/>
-    <line x1="16" y1="17" x2="8" y2="17"/>
-    <line x1="10" y1="9" x2="8" y2="9"/>
+    <polyline points="21 8 21 21 3 21 3 8"/><rect x="1" y="3" width="22" height="5"/><line x1="10" y1="12" x2="14" y2="12"/>
   </svg>
 );
-const IconSearch = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
+const IconTool = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
   </svg>
 );
-const IconZap = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
+const IconStar = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-  </svg>
-);
-const IconFlame = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
-  </svg>
-);
-const IconWind = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/>
-  </svg>
-);
-const IconGauge = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/>
-  </svg>
-);
-const IconShield = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
   </svg>
 );
 const IconShieldCheck = ({ size = 20, color = "#F2CF51" }: { size?: number; color?: string }) => (
@@ -72,11 +48,16 @@ const IconCheckCircle = ({ size = 22, color = "currentColor" }: { size?: number;
     <polyline points="22 4 12 14.01 9 11.01"/>
   </svg>
 );
-const IconAlert = ({ size = 20, color = "currentColor" }: { size?: number; color?: string }) => (
+const IconThermometer = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
-    <line x1="12" y1="9" x2="12" y2="13"/>
-    <line x1="12" y1="17" x2="12.01" y2="17"/>
+    <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+  </svg>
+);
+const IconGlobe = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <circle cx="12" cy="12" r="10"/>
+    <line x1="2" y1="12" x2="22" y2="12"/>
+    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
   </svg>
 );
 
@@ -104,20 +85,20 @@ function ProcessStep({ step, title, desc }: { step: string; title: string; desc:
   );
 }
 
-export default function GasServicesPage() {
+export default function BoilerInstallPage() {
   const [activeSub, setActiveSub] = useState("All");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
   // ── Pull data directly from mockData (no fetch needed) ────────────────────
-  const serviceData = servicePagesData.find((s) => s.id === "1")!;
+  const serviceData = servicePagesData.find((s) => s.id === "3")!;
 
   const allProjects = portfolioProjects.filter(
-    (p) => p.category === GAS_MAIN_CATEGORY
+    (p) => p.category === BOILER_INSTALL_MAIN_CATEGORY
   );
 
   const subOptions = useMemo(() => {
-    const subs = (portfolioSubMap[GAS_MAIN_CATEGORY] || []).map((s) => s.name);
+    const subs = (portfolioSubMap[BOILER_INSTALL_MAIN_CATEGORY] || []).map((s) => s.name);
     return ["All", ...subs];
   }, []);
 
@@ -162,16 +143,16 @@ export default function GasServicesPage() {
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-10">
                   <button onClick={() => setIsPopupOpen(true)} className="inline-flex items-center gap-3 px-10 py-4 bg-[#F2CF51] text-[#12416B] rounded-2xl font-black uppercase tracking-widest shadow-xl hover:scale-105 transition-all text-sm">
-                    Book CP12 Inspection <IconArrow size={14} color="#12416B" />
+                    Get Free Quote <IconArrow size={14} color="#12416B" />
                   </button>
                   <div className="flex flex-col">
                     <span className="text-4xl font-black italic text-[#F2CF51] leading-none">£{serviceData.price}</span>
-                    <span className="text-[9px] font-black uppercase text-white/40 tracking-widest mt-1">From · Single Property</span>
+                    <span className="text-[9px] font-black uppercase text-white/40 tracking-widest mt-1">From · Supply &amp; Fit</span>
                   </div>
                 </div>
               </div>
               <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-0">
-                <Image src={serviceData.hero_image} alt="Gas Safe Engineer performing CP12 inspection" fill className="object-cover" priority />
+                <Image src={serviceData.hero_image} alt="New combi boiler installation" fill className="object-cover" priority />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#12416B] via-[#12416B]/30 to-transparent lg:from-transparent" />
                 <div className="absolute bottom-6 right-6 bg-white rounded-2xl p-4 shadow-2xl">
                   <div className="flex items-center gap-3">
@@ -179,52 +160,52 @@ export default function GasServicesPage() {
                       <IconShieldCheck size={18} color="#F2CF51" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black uppercase tracking-wider text-[#12416B]">Gas Safe</div>
-                      <div className="text-[9px] text-slate-400 font-bold uppercase">Registered</div>
+                      <div className="text-[10px] font-black uppercase tracking-wider text-[#12416B]">Up to 10yr</div>
+                      <div className="text-[9px] text-slate-400 font-bold uppercase">Warranty</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="relative px-8 md:px-16 pb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-              <StatBadge value="500+" label="CP12s Issued" />
-              <StatBadge value="24/7" label="Emergency Cover" />
-              <StatBadge value="100%" label="Compliance Rate" />
-              <StatBadge value="Same Day" label="Certificate Issue" />
+              <StatBadge value="300+" label="Boilers Installed" />
+              <StatBadge value="1 Day" label="Typical Install" />
+              <StatBadge value="10yr"  label="Warranty Option" />
+              <StatBadge value="All"   label="Major Brands" />
             </div>
           </div>
         </section>
 
-        {/* ── WHAT IS CP12 ──────────────────────────────────────────────────── */}
+        {/* ── WHY UPGRADE ───────────────────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#F2CF51] mb-4 block">Legal Requirement</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#F2CF51] mb-4 block">Upgrade Your Heating</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-6">
-                What Is A <span className="[-webkit-text-stroke:2px_#12416B] text-transparent">CP12</span> <span className="text-[#F2CF51]">Record?</span>
+                Is It Time For A <span className="text-[#F2CF51]">New Boiler?</span>
               </h2>
               <div className="space-y-4 text-slate-500 text-base leading-relaxed">
-                <p>A <strong className="text-[#12416B]">CP12 — Landlord Gas Safety Record</strong> is a legal document required under the Gas Safety (Installation and Use) Regulations 1998. Every landlord in England must hold a valid CP12 for every gas appliance in their rental property.</p>
-                <p>Our Gas Safe registered engineers inspect every gas appliance, check flues and ventilation, verify safety devices, and measure gas pressure — issuing your official certificate the same day.</p>
-                <p>Failure to hold a valid CP12 can result in <strong className="text-[#12416B]">fines up to £6,000</strong> and criminal prosecution. Don't take the risk.</p>
+                <p>Boilers over 10–12 years old are <strong className="text-[#12416B]">significantly less efficient</strong> than modern A-rated units. Upgrading to a new combi or system boiler can reduce your heating bills by up to 30%.</p>
+                <p>We supply and install boilers from Worcester Bosch, Vaillant, Baxi and Ideal — all with manufacturer warranty options of up to 10 years when registered.</p>
+                <p>Our engineers complete most installations in a single day with <strong className="text-[#12416B]">minimal disruption</strong> to your home or business.</p>
               </div>
               <button onClick={() => setIsPopupOpen(true)} className="mt-8 inline-flex items-center gap-3 px-8 py-4 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest shadow-lg hover:opacity-90 transition-all text-xs">
-                Book Now <IconArrow size={13} color="#F2CF51" />
+                Get Free Survey <IconArrow size={13} color="#F2CF51" />
               </button>
             </div>
             <div className="bg-white rounded-[2.5rem] shadow-xl border border-slate-100 overflow-hidden">
               <div className="bg-[#12416B] px-8 py-6">
-                <h3 className="text-white font-black uppercase italic text-xl tracking-tight">What We Check</h3>
-                <p className="text-white/50 text-[11px] uppercase tracking-widest font-bold mt-1">During Every CP12 Visit</p>
+                <h3 className="text-white font-black uppercase italic text-xl tracking-tight">What's Included</h3>
+                <p className="text-white/50 text-[11px] uppercase tracking-widest font-bold mt-1">With Every Installation</p>
               </div>
               <div className="p-8 grid gap-1">
                 {[
-                  { icon: <IconFlame size={17} color="#12416B" />,       item: "All gas boilers, fires & cookers", note: "Every appliance tested" },
-                  { icon: <IconWind size={17} color="#12416B" />,        item: "Flue integrity & combustion output", note: "Spillage & CO checks" },
-                  { icon: <IconGauge size={17} color="#12416B" />,       item: "Gas pressure & tightness test", note: "Mains to appliance" },
-                  { icon: <IconShield size={17} color="#12416B" />,      item: "Safety devices & controls", note: "Thermostats & interlocks" },
-                  { icon: <IconWind size={17} color="#12416B" />,        item: "Ventilation & air supply", note: "Adequate combustion air" },
-                  { icon: <IconCertificate size={17} color="#12416B" />, item: "CP12 certificate issued same day", note: "Digital & physical copy" },
+                  { icon: <IconBox size={17} color="#12416B" />,         item: "New boiler supply & delivery", note: "All major brands stocked" },
+                  { icon: <IconTool size={17} color="#12416B" />,        item: "Full installation by Gas Safe engineer", note: "Fitted to manufacturer spec" },
+                  { icon: <IconThermometer size={17} color="#12416B" />, item: "New flue & thermostat controls", note: "Smart thermostat options available" },
+                  { icon: <IconGlobe size={17} color="#12416B" />,       item: "Magnetic system filter fitted", note: "Protects new boiler from sludge" },
+                  { icon: <IconCheckCircle size={17} color="#12416B" />, item: "System power flush (if required)", note: "Ensures clean water circulation" },
+                  { icon: <IconStar size={17} color="#12416B" />,        item: "Manufacturer warranty registered", note: "Up to 10 years cover" },
                 ].map(({ icon, item, note }) => (
                   <div key={item} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors">
                     <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center flex-shrink-0">{icon}</div>
@@ -243,16 +224,16 @@ export default function GasServicesPage() {
         {/* ── SERVICE CARDS ──────────────────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="text-center mb-14">
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Our Expertise</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Boiler Options</span>
             <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none">
-              Certified Gas <span className="text-[#F2CF51]">Engineering</span>
+              Premium Combi <span className="text-[#F2CF51]">Upgrades</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { num: "01", icon: <IconCertificate size={24} />, sub: "Legal Compliance", title: "CP12 Certification", desc: "Official Gas Safety Records for landlords, letting agents and homeowners. Issued same day by Gas Safe registered engineers covering all Essex postcodes." },
-              { num: "02", icon: <IconSearch size={24} />,      sub: "Safety First",     title: "Leak Detection",    desc: "Advanced electronic gas sniffers and pressure-drop testing to pinpoint escapes behind walls, under floors and in meter cupboards." },
-              { num: "03", icon: <IconZap size={24} />,         sub: "24/7 Response",    title: "Emergency Repairs", desc: "Immediate response to RIDDOR-reportable gas escapes. We isolate, trace, and permanently repair the fault — restoring your supply safely and fast." },
+              { num: "01", icon: <IconBox size={24} />,  sub: "Most Popular",    title: "Combi Boiler",    desc: "No hot water cylinder needed. Instant hot water on demand with high efficiency ratings. Ideal for most Essex homes." },
+              { num: "02", icon: <IconTool size={24} />, sub: "Larger Homes",    title: "System Boiler",   desc: "Separate hot water cylinder with mains pressure hot water. Perfect for homes with multiple bathrooms and high demand." },
+              { num: "03", icon: <IconStar size={24} />, sub: "Full Upgrade",    title: "Full CH Install",  desc: "Brand new central heating system from scratch — new boiler, radiators, pipework and controls. Full project management." },
             ].map((item) => (
               <div key={item.num} className="group bg-white p-8 md:p-10 rounded-[2.5rem] shadow-lg border border-slate-100 hover:bg-[#12416B] transition-all duration-500 cursor-pointer">
                 <div className="flex justify-between items-start mb-6">
@@ -263,7 +244,7 @@ export default function GasServicesPage() {
                 <h3 className="text-2xl font-black uppercase italic text-[#12416B] group-hover:text-white transition-colors mb-3 leading-tight">{item.title}</h3>
                 <p className="text-slate-500 group-hover:text-blue-100/70 transition-colors leading-relaxed text-sm">{item.desc}</p>
                 <div className="mt-6 flex items-center gap-2 text-[#F2CF51] opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-[10px] font-black uppercase tracking-widest">Learn More</span>
+                  <span className="text-[10px] font-black uppercase tracking-widest">Get Quote</span>
                   <IconArrow size={12} color="#F2CF51" />
                 </div>
               </div>
@@ -275,32 +256,32 @@ export default function GasServicesPage() {
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Simple Process</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-10">Your CP12 <br /><span className="text-[#F2CF51]">In 4 Steps</span></h2>
-              <ProcessStep step="01" title="Book Online or by Phone"     desc="Choose a date that suits you. We cover all Essex and East London postcodes — same-day slots often available." />
-              <ProcessStep step="02" title="Engineer Arrives On Time"    desc="Your Gas Safe registered engineer arrives in uniform with all equipment. We carry ID and our Gas Safe card for your peace of mind." />
-              <ProcessStep step="03" title="Full Inspection Completed"   desc="Every gas appliance, flue, and pipework section is systematically inspected and tested to Gas Safe standards." />
-              <ProcessStep step="04" title="Certificate Issued Same Day" desc="Your official CP12 Landlord Gas Safety Record is issued digitally and by post. Keep one copy, give one to your tenant." />
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">How It Works</span>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-10">New Boiler <br /><span className="text-[#F2CF51]">In 4 Steps</span></h2>
+              <ProcessStep step="01" title="Free Home Survey"     desc="We visit your property to assess your current system and recommend the right boiler size and model for your home." />
+              <ProcessStep step="02" title="Fixed Quote Provided" desc="You receive a detailed, fixed-price quote with no surprises. We'll advise on the best brand and warranty option for your budget." />
+              <ProcessStep step="03" title="Installation Day"     desc="Our engineers arrive and complete the full installation — typically in one day. We leave your home clean and tidy." />
+              <ProcessStep step="04" title="Handover & Warranty"  desc="We walk you through your new system, register your warranty with the manufacturer, and leave you with all documentation." />
             </div>
             <div className="space-y-6">
               <div className="bg-[#12416B] rounded-[2rem] p-8 text-white">
-                <h3 className="font-black uppercase italic text-xl text-[#F2CF51] mb-4">Who Needs a CP12?</h3>
-                <div className="space-y-3">
-                  {["Landlords with residential rental properties","HMO property owners & managers","Commercial premises with gas appliances","New landlords before first tenancy","Homeowners selling their property","Housing associations & councils"].map((w) => (
-                    <div key={w} className="flex items-center gap-3 text-sm text-white/80">
-                      <span className="flex-shrink-0"><IconCheck size={13} color="#F2CF51" /></span>{w}
+                <h3 className="font-black uppercase italic text-xl text-[#F2CF51] mb-4">Brands We Install</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {["Worcester Bosch","Vaillant","Baxi","Ideal Boilers","Viessmann","Potterton","Alpha Heating","Glow-worm"].map((brand) => (
+                    <div key={brand} className="flex items-center gap-3 text-sm text-white/80">
+                      <span className="flex-shrink-0"><IconCheck size={13} color="#F2CF51" /></span>{brand}
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="bg-amber-50 border border-amber-200 rounded-[2rem] p-8">
+              <div className="bg-green-50 border border-green-100 rounded-[2rem] p-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <IconAlert size={19} color="#B45309" />
+                  <div className="w-10 h-10 rounded-xl bg-green-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <IconStar size={19} color="#15803D" />
                   </div>
                   <div>
-                    <h4 className="font-black uppercase text-[#12416B] text-sm mb-2">Annual Renewal Required</h4>
-                    <p className="text-slate-600 text-sm leading-relaxed">Your CP12 must be renewed every 12 months. A record must be given to existing tenants within 28 days of the check, and to new tenants before they move in.</p>
+                    <h4 className="font-black uppercase text-[#12416B] text-sm mb-2">Up to 10 Year Warranty</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">All new boilers we install come with manufacturer warranty options of up to 10 years. We handle the registration for you on installation day.</p>
                   </div>
                 </div>
               </div>
@@ -312,7 +293,7 @@ export default function GasServicesPage() {
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="flex flex-col lg:flex-row justify-between items-center lg:items-end gap-6 mb-12">
             <div className="text-center lg:text-left">
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Recent Work</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Recent Installs</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none">
                 Our Work <span className="text-[#F2CF51] [-webkit-text-stroke:1px_#12416B]">Portfolio</span>
               </h2>
@@ -400,25 +381,25 @@ export default function GasServicesPage() {
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative h-[400px] md:h-[560px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white order-2 lg:order-1">
-              <Image src={serviceData.hero_image} alt="Gas Safe engineer at work" fill className="object-cover" />
+              <Image src={serviceData.hero_image} alt="New boiler installation" fill className="object-cover" />
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-[#12416B] flex items-center justify-center flex-shrink-0">
                     <IconCheckCircle size={22} color="#F2CF51" />
                   </div>
                   <div>
-                    <div className="font-black uppercase text-[#12416B] text-sm">Gas Safe Registered</div>
-                    <div className="text-slate-500 text-[11px] mt-0.5">All engineers carry valid Gas Safe ID cards</div>
+                    <div className="font-black uppercase text-[#12416B] text-sm">Installed Same Day</div>
+                    <div className="text-slate-500 text-[11px] mt-0.5">Most installations completed in one visit</div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="order-1 lg:order-2">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Why Essex Trusts Us</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-8">Zero Tolerance <br /><span className="text-[#F2CF51]">For Gas Risks</span></h2>
-              <p className="text-slate-500 text-lg leading-relaxed mb-8">Every engineer on our team is Gas Safe registered, DBS checked and carries liability insurance. We don't cut corners — your tenants' safety and your legal compliance are always our priority.</p>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-8">Installed Right <br /><span className="text-[#F2CF51]">First Time</span></h2>
+              <p className="text-slate-500 text-lg leading-relaxed mb-8">We don't just fit boilers — we design the right heating solution for your home. Gas Safe registered, fully insured, and backed by manufacturer warranties.</p>
               <div className="grid grid-cols-2 gap-3">
-                {["Same-Day Certificates","Fully Insured Engineers","Digital CP12 Records","Annual Reminders Sent","CO Alarm Installation","All Appliance Types","Essex & East London","Landlord Discounts"].map((item) => (
+                {["Free Home Survey","Fixed-Price Quotes","Same-Day Install","10yr Warranty Option","All Major Brands","Smart Controls Available","Essex & East London","Finance Options"].map((item) => (
                   <div key={item} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#F2CF51] flex-shrink-0"></div>
                     <span className="text-[10px] font-black uppercase tracking-wider text-[#12416B]">{item}</span>
@@ -434,10 +415,10 @@ export default function GasServicesPage() {
           <div className="bg-[#12416B] rounded-[2.5rem] md:rounded-[4rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl border-4 md:border-[10px] border-white">
             <div className="p-10 md:p-16 lg:w-7/12 text-white text-center lg:text-left">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#F2CF51]/60 mb-3 block">Transparent Pricing</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-6 leading-none tracking-tighter">CP12 Gas Safety <br /><span className="text-[#F2CF51]">Packages</span></h2>
-              <p className="text-white/60 text-base leading-relaxed max-w-md mb-10">Fixed-price inspections with no hidden call-out fees. Multi-property landlord discounts available — ask us when you book.</p>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-6 leading-none tracking-tighter">Boiler Supply <br /><span className="text-[#F2CF51]">&amp; Installation</span></h2>
+              <p className="text-white/60 text-base leading-relaxed max-w-md mb-10">Fixed-price supply and fit packages. No surprises, no hidden costs. Finance options available for eligible customers.</p>
               <div className="grid sm:grid-cols-2 gap-3">
-                {["CP12 Certificate Issued Same Day","All Gas Appliances Inspected","Flue & Ventilation Checks","Gas Tightness Test Included","Emergency Repairs Available","Landlord Portfolio Discounts"].map((li) => (
+                {["New Boiler Supplied & Fitted","Flue & Controls Included","Magnetic Filter Installed","Warranty Registered","System Flush if Required","Finance Options Available"].map((li) => (
                   <div key={li} className="flex items-center justify-center lg:justify-start gap-3 text-[10px] font-black uppercase">
                     <span className="text-[#F2CF51] flex-shrink-0"><IconCheck size={12} color="#F2CF51" /></span>
                     <span className="text-white/80">{li}</span>
@@ -447,17 +428,18 @@ export default function GasServicesPage() {
             </div>
             <div className="bg-[#F2CF51] p-10 md:p-16 lg:w-5/12 flex flex-col items-center justify-center text-[#12416B] gap-6">
               <div className="text-center">
-                <span className="font-black uppercase text-[10px] tracking-widest opacity-60 block mb-1">Starting From</span>
-                <div className="text-7xl md:text-9xl font-black italic leading-none">£{serviceData.price}</div>
-                <span className="text-[10px] font-black uppercase tracking-widest opacity-60 mt-2 block">Single Property · Inc. VAT</span>
+                <span className="font-black uppercase text-[10px] tracking-widest opacity-60 block mb-1">Supply &amp; Fit From</span>
+                <div className="text-6xl md:text-8xl font-black italic leading-none">£{serviceData.price}</div>
+                <span className="text-[10px] font-black uppercase tracking-widest opacity-60 mt-2 block">Fully Installed · Inc. VAT</span>
               </div>
               <button onClick={() => setIsPopupOpen(true)} className="w-full py-5 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-2xl text-sm">
-                Get My CP12 Certificate
+                Get Free Quote
               </button>
-              <p className="text-[9px] font-black uppercase tracking-wider text-[#12416B]/50 text-center">No hidden fees · Same-day availability · Gas Safe registered</p>
+              <p className="text-[9px] font-black uppercase tracking-wider text-[#12416B]/50 text-center">Free survey · Fixed price · Gas Safe registered</p>
             </div>
           </div>
         </section>
+
       </main>
       <Footer />
       <BookingPopup isOpen={isPopupOpen} onClose={() => setIsPopupOpen(false)} />

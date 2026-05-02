@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Mir Plumbing & Heating Ltd",
-  description: "Professional Plumbing and Heating Solutions",
+  title: "Mir Heating & Services Ltd",
+  description: "Professional Gas(CP12) and Heating Solutions",
 };
 
 export default function RootLayout({
