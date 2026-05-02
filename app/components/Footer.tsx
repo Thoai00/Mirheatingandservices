@@ -12,7 +12,7 @@ interface ContactInfo {
 
 export default function Footer() {
   const [contact, setContact] = useState<ContactInfo>({
-    phone:   "0777 111 9401",          // sensible fallbacks while loading
+    phone:   "+44 7951 803179",          // sensible fallbacks while loading
     email:   "info@mirplumbing.co.uk",
     address: "Essex, United Kingdom",
   });

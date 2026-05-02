@@ -185,7 +185,7 @@ export default function HeatingServicesPage() {
                 </div>
               </div>
               <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-0">
-                <Image src="/client/boiler-service.jpeg" alt="Boiler service engineer at work" fill className="object-cover" priority />
+                <Image src="/client/new/heating1.jpeg" alt="Boiler service engineer at work" fill className="object-cover" priority />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#12416B] via-[#12416B]/30 to-transparent lg:from-transparent" />
                 <div className="absolute bottom-6 right-6 bg-white rounded-2xl p-4 shadow-2xl">
                   <div className="flex items-center gap-3">
@@ -416,7 +416,7 @@ export default function HeatingServicesPage() {
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative h-[400px] md:h-[560px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white order-2 lg:order-1">
-              <Image src="/client/boiler-service.jpeg" alt="Boiler engineer at work" fill className="object-cover" />
+              <Image src="/client/new/heating1.jpeg" alt="Boiler engineer at work" fill className="object-cover" />
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-[#12416B] flex items-center justify-center flex-shrink-0">

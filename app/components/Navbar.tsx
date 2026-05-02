@@ -56,7 +56,7 @@ export default function Navbar() {
               </Link>
             ))}
 
-            <a href="tel:07771119401" className="rounded-2xl bg-[#12416B] px-8 py-4 text-[#F2CF51] shadow-[0_15px_30px_rgba(18,65,107,0.3),inset_0_-4px_0_rgba(0,0,0,0.2)] hover:-translate-y-1 active:translate-y-px transition-all">
+            <a href="tel:+44 7951 803179" className="rounded-2xl bg-[#12416B] px-8 py-4 text-[#F2CF51] shadow-[0_15px_30px_rgba(18,65,107,0.3),inset_0_-4px_0_rgba(0,0,0,0.2)] hover:-translate-y-1 active:translate-y-px transition-all">
                 GET A QUOTE
             </a>
           </div>

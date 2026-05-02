@@ -56,7 +56,7 @@ export const servicesData: ServiceItem[] = [
     icon: "⚙️",
     tagline: "Worcester Bosch & Vaillant Approved",
     price: "1,500",
-    image_path: "/client/heatingtwo.jpeg",
+    image_path: "/client/new/heatingtwo.jpeg",
     description:
       "New boiler supply and full installation by Gas Safe registered engineers. We offer competitive quotes on Worcester Bosch, Vaillant, and Baxi systems with full manufacturer warranties and flexible finance options.",
     path: "/services/boiler-install",

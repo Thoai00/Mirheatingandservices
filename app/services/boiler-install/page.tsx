@@ -5,7 +5,7 @@ import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import BookingPopup from "../../components/BookingPopup";
-import { servicePagesData, portfolioProjects, portfolioSubMap } from "../../components/mockdata"; // ← static data
+import { servicePagesData, portfolioProjects, portfolioSubMap } from "../../components/mockdata";
 
 const BOILER_INSTALL_MAIN_CATEGORY = "Boiler Supply & Installation";
 const PAGE_SIZE = 6;
@@ -85,12 +85,14 @@ function ProcessStep({ step, title, desc }: { step: string; title: string; desc:
   );
 }
 
+// ── Hardcoded hero image for this page ────────────────────────────────────────
+const HERO_IMAGE = "/client/new/heatingtwo.jpeg";
+
 export default function BoilerInstallPage() {
   const [activeSub, setActiveSub] = useState("All");
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
   const [isPopupOpen, setIsPopupOpen] = useState(false);
 
-  // ── Pull data directly from mockData (no fetch needed) ────────────────────
   const serviceData = servicePagesData.find((s) => s.id === "3")!;
 
   const allProjects = portfolioProjects.filter(
@@ -151,8 +153,16 @@ export default function BoilerInstallPage() {
                   </div>
                 </div>
               </div>
+
+              {/* ── Hero Image: heatingtwo.jpeg ── */}
               <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-0">
-                <Image src={serviceData.hero_image} alt="New combi boiler installation" fill className="object-cover" priority />
+                <Image
+                  src={HERO_IMAGE}
+                  alt="New combi boiler installation"
+                  fill
+                  className="object-cover"
+                  priority
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#12416B] via-[#12416B]/30 to-transparent lg:from-transparent" />
                 <div className="absolute bottom-6 right-6 bg-white rounded-2xl p-4 shadow-2xl">
                   <div className="flex items-center gap-3">
@@ -200,12 +210,12 @@ export default function BoilerInstallPage() {
               </div>
               <div className="p-8 grid gap-1">
                 {[
-                  { icon: <IconBox size={17} color="#12416B" />,         item: "New boiler supply & delivery", note: "All major brands stocked" },
-                  { icon: <IconTool size={17} color="#12416B" />,        item: "Full installation by Gas Safe engineer", note: "Fitted to manufacturer spec" },
-                  { icon: <IconThermometer size={17} color="#12416B" />, item: "New flue & thermostat controls", note: "Smart thermostat options available" },
-                  { icon: <IconGlobe size={17} color="#12416B" />,       item: "Magnetic system filter fitted", note: "Protects new boiler from sludge" },
-                  { icon: <IconCheckCircle size={17} color="#12416B" />, item: "System power flush (if required)", note: "Ensures clean water circulation" },
-                  { icon: <IconStar size={17} color="#12416B" />,        item: "Manufacturer warranty registered", note: "Up to 10 years cover" },
+                  { icon: <IconBox size={17} color="#12416B" />,         item: "New boiler supply & delivery",              note: "All major brands stocked" },
+                  { icon: <IconTool size={17} color="#12416B" />,        item: "Full installation by Gas Safe engineer",     note: "Fitted to manufacturer spec" },
+                  { icon: <IconThermometer size={17} color="#12416B" />, item: "New flue & thermostat controls",             note: "Smart thermostat options available" },
+                  { icon: <IconGlobe size={17} color="#12416B" />,       item: "Magnetic system filter fitted",              note: "Protects new boiler from sludge" },
+                  { icon: <IconCheckCircle size={17} color="#12416B" />, item: "System power flush (if required)",           note: "Ensures clean water circulation" },
+                  { icon: <IconStar size={17} color="#12416B" />,        item: "Manufacturer warranty registered",           note: "Up to 10 years cover" },
                 ].map(({ icon, item, note }) => (
                   <div key={item} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors">
                     <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center flex-shrink-0">{icon}</div>
@@ -231,9 +241,9 @@ export default function BoilerInstallPage() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { num: "01", icon: <IconBox size={24} />,  sub: "Most Popular",    title: "Combi Boiler",    desc: "No hot water cylinder needed. Instant hot water on demand with high efficiency ratings. Ideal for most Essex homes." },
-              { num: "02", icon: <IconTool size={24} />, sub: "Larger Homes",    title: "System Boiler",   desc: "Separate hot water cylinder with mains pressure hot water. Perfect for homes with multiple bathrooms and high demand." },
-              { num: "03", icon: <IconStar size={24} />, sub: "Full Upgrade",    title: "Full CH Install",  desc: "Brand new central heating system from scratch — new boiler, radiators, pipework and controls. Full project management." },
+              { num: "01", icon: <IconBox size={24} />,  sub: "Most Popular", title: "Combi Boiler",   desc: "No hot water cylinder needed. Instant hot water on demand with high efficiency ratings. Ideal for most Essex homes." },
+              { num: "02", icon: <IconTool size={24} />, sub: "Larger Homes", title: "System Boiler",  desc: "Separate hot water cylinder with mains pressure hot water. Perfect for homes with multiple bathrooms and high demand." },
+              { num: "03", icon: <IconStar size={24} />, sub: "Full Upgrade",  title: "Full CH Install", desc: "Brand new central heating system from scratch — new boiler, radiators, pipework and controls. Full project management." },
             ].map((item) => (
               <div key={item.num} className="group bg-white p-8 md:p-10 rounded-[2.5rem] shadow-lg border border-slate-100 hover:bg-[#12416B] transition-all duration-500 cursor-pointer">
                 <div className="flex justify-between items-start mb-6">
@@ -380,8 +390,15 @@ export default function BoilerInstallPage() {
         {/* ── WHY CHOOSE US ──────────────────────────────────────────────────── */}
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* ── Section Image: heatingtwo.jpeg ── */}
             <div className="relative h-[400px] md:h-[560px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white order-2 lg:order-1">
-              <Image src={serviceData.hero_image} alt="New boiler installation" fill className="object-cover" />
+              <Image
+                src={HERO_IMAGE}
+                alt="New boiler installation"
+                fill
+                className="object-cover"
+              />
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-[#12416B] flex items-center justify-center flex-shrink-0">
@@ -394,6 +411,7 @@ export default function BoilerInstallPage() {
                 </div>
               </div>
             </div>
+
             <div className="order-1 lg:order-2">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Why Essex Trusts Us</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-8">Installed Right <br /><span className="text-[#F2CF51]">First Time</span></h2>
