@@ -32,7 +32,7 @@ export const servicesData: ServiceItem[] = [
     icon: "🔥",
     tagline: "Landlord & Homeowner Compliance",
     price: "60",
-    image_path: "/client/gas-safety.jpeg",
+    image_path: "/client/new/gas1.jpeg",
     description:
       "Fully certified Gas Safe engineers carry out comprehensive inspections of all gas appliances, flues, and pipework. We issue same-day CP12 certificates for landlords, letting agents, and homeowners across Essex.",
     path: "/services/gas-services",
@@ -44,7 +44,7 @@ export const servicesData: ServiceItem[] = [
     icon: "🛠️",
     tagline: "All Makes & Models Covered",
     price: "75",
-    image_path: "/client/boiler-repair.jpeg",
+    image_path: "/client/new/heating1.jpeg",
     description:
       "From no-heat emergencies to annual servicing, our engineers diagnose and repair all major boiler brands. We carry common spare parts on every van for fast, first-visit fixes throughout Essex.",
     path: "/services/heating-services",
@@ -56,7 +56,7 @@ export const servicesData: ServiceItem[] = [
     icon: "⚙️",
     tagline: "Worcester Bosch & Vaillant Approved",
     price: "1,500",
-    image_path: "/client/boiler-install.jpeg",
+    image_path: "/client/heatingtwo.jpeg",
     description:
       "New boiler supply and full installation by Gas Safe registered engineers. We offer competitive quotes on Worcester Bosch, Vaillant, and Baxi systems with full manufacturer warranties and flexible finance options.",
     path: "/services/boiler-install",
@@ -84,7 +84,7 @@ export const servicePagesData: ServicePageData[] = [
     tagline: "CERTIFIED GAS ENGINEERING",
     description:
       "Gas Safe registered inspections, leak detection, and emergency gas escape repairs. Professional CP12 certification for Essex landlords and homeowners.",
-    hero_image: "/client/gas-safety.jpeg",
+    hero_image: "/client/new/gas1.jpeg",
   },
   {
     id: "2",
@@ -94,7 +94,7 @@ export const servicePagesData: ServicePageData[] = [
     tagline: "ALL MAKES & MODELS COVERED",
     description:
       "From no-heat emergencies to annual servicing, our engineers diagnose and repair all major boiler brands. We carry common spare parts on every van for fast, first-visit fixes throughout Essex.",
-    hero_image: "/client/boiler-repair.jpeg",
+    hero_image: "/client/new/heating1.jpeg",
   },
   {
     id: "3",
@@ -104,7 +104,7 @@ export const servicePagesData: ServicePageData[] = [
     tagline: "PREMIUM COMBI UPGRADES",
     description:
       "Premium combi boiler supply and installation from leading manufacturers. Fully fitted by Gas Safe engineers with 10-year warranty options.",
-    hero_image: "/uploads/1773847902662-two.jpeg",
+    hero_image: "/uploads/new/heatingtwo.jpeg",
   },
 ];
 
