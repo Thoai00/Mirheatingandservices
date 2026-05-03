@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import HeroSection from "./components/HeroSection";
 import ServicesGrid from "./components/ServicesGrid";
+import ReviewsSection from "./components/Reviewssection";
 import RecentWorks from "./components/RecentWorks";
 import ProfessionalStandards from "./components/ProfessionalStandards";
 import PartnersSection from "./components/PartnersSection";
@@ -27,6 +28,10 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesGrid />
+
+      {/* ✅ NEW: Customer Reviews Section */}
+      <ReviewsSection />
+
       <RecentWorks />
       <ProfessionalStandards />
       <PartnersSection />
