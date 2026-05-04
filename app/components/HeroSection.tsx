@@ -44,7 +44,7 @@ export default function HeroSection() {
 
             <div className="space-y-4">
               <h2 className="text-5xl md:text-[90px] font-black text-[#12416B] leading-[0.9] md:leading-[0.85] tracking-tighter">
-                MIR <br />
+                Mir <br />
                 <span className="italic text-transparent bg-clip-text bg-linear-to-r from-[#12416B] via-[#245b8d] to-[#F2CF51]">
                   Heating &amp; <br className="md:hidden" /> Services ESSEX
                 </span>
@@ -67,7 +67,7 @@ export default function HeroSection() {
 
               <div className="flex items-center justify-center gap-4 px-6 py-4 md:py-0 rounded-2xl md:rounded-3xl bg-white border border-slate-100 shadow-md">
                 <div className="text-left">
-                  <div className="text-[#12416B] font-black text-lg md:text-xl leading-none">Premium</div>
+                  <div className="text-[#12416B] font-black text-lg md:text-xl leading-none">Free quote</div>
                   <div className="text-[9px] font-bold uppercase text-slate-400">Essex Service</div>
                 </div>
               </div>

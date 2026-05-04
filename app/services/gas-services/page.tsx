@@ -166,6 +166,7 @@ export default function GasServicesPage() {
                   </button>
                   <div className="flex flex-col">
                     <span className="text-4xl font-black italic text-[#F2CF51] leading-none">£{serviceData.price}</span>
+                    <span className="text-[10px] font-black uppercase text-[#F2CF51] tracking-widest mt-1">Up To 2 appliances extra £10</span>
                     <span className="text-[9px] font-black uppercase text-white/40 tracking-widest mt-1">From · Single Property</span>
                   </div>
                 </div>
@@ -248,11 +249,9 @@ export default function GasServicesPage() {
               Certified Gas <span className="text-[#F2CF51]">Engineering</span>
             </h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-1 gap-6">
             {[
-              { num: "01", icon: <IconCertificate size={24} />, sub: "Legal Compliance", title: "CP12 Certification", desc: "Official Gas Safety Records for landlords, letting agents and homeowners. Issued same day by Gas Safe registered engineers covering all Essex postcodes." },
-              { num: "02", icon: <IconSearch size={24} />,      sub: "Safety First",     title: "Leak Detection",    desc: "Advanced electronic gas sniffers and pressure-drop testing to pinpoint escapes behind walls, under floors and in meter cupboards." },
-              { num: "03", icon: <IconZap size={24} />,         sub: "24/7 Response",    title: "Emergency Repairs", desc: "Immediate response to RIDDOR-reportable gas escapes. We isolate, trace, and permanently repair the fault — restoring your supply safely and fast." },
+              { num: "", icon: <IconCertificate size={24} />, sub: "Legal Compliance", title: "CP12 Certification", desc: "Official Gas Safety Records for landlords, letting agents and homeowners. Issued same day by Gas Safe registered engineers covering all Essex postcodes." },
             ].map((item) => (
               <div key={item.num} className="group bg-white p-8 md:p-10 rounded-[2.5rem] shadow-lg border border-slate-100 hover:bg-[#12416B] transition-all duration-500 cursor-pointer">
                 <div className="flex justify-between items-start mb-6">
@@ -263,8 +262,7 @@ export default function GasServicesPage() {
                 <h3 className="text-2xl font-black uppercase italic text-[#12416B] group-hover:text-white transition-colors mb-3 leading-tight">{item.title}</h3>
                 <p className="text-slate-500 group-hover:text-blue-100/70 transition-colors leading-relaxed text-sm">{item.desc}</p>
                 <div className="mt-6 flex items-center gap-2 text-[#F2CF51] opacity-0 group-hover:opacity-100 transition-opacity">
-                  <span className="text-[10px] font-black uppercase tracking-widest">Learn More</span>
-                  <IconArrow size={12} color="#F2CF51" />
+                  
                 </div>
               </div>
             ))}
@@ -449,6 +447,7 @@ export default function GasServicesPage() {
               <div className="text-center">
                 <span className="font-black uppercase text-[10px] tracking-widest opacity-60 block mb-1">Starting From</span>
                 <div className="text-7xl md:text-9xl font-black italic leading-none">£{serviceData.price}</div>
+                <span className="text-[15px] font-black uppercase tracking-widest mt-2 block">Up to 2 Appliances Extra £10</span>
                 <span className="text-[10px] font-black uppercase tracking-widest opacity-60 mt-2 block">Single Property · Inc. VAT</span>
               </div>
               <button onClick={() => setIsPopupOpen(true)} className="w-full py-5 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-2xl text-sm">

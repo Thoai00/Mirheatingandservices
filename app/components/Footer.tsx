@@ -303,9 +303,10 @@ export default function Footer() {
           <h4 className="text-[#F2CF51] font-bold uppercase tracking-widest mb-6">Services</h4>
           <ul className="space-y-4 text-blue-200/70">
             {[
-              { label: "Gas Services",      href: "/services/gas-services"     },
-              { label: "Plumbing Services", href: "/services/plumbing-services" },
-              { label: "Heating Services",  href: "/services/heating-services"  },
+              { label: "Gas Safety Certificate(CP12)",      href: "/services/gas-services"     },
+              { label: "Boiler Services & Annual Servicing", href: "/services/heating-services" },
+              { label: "Boiler Breakdown & Repair",  href: "/services/boiler-breakdown"  },
+              { label: "Boiler Supply & Installation",  href: "/services/boiler-install"  },
               { label: "Home Improvement",  href: "/home-improvement"           },
               { label: "Our Portfolio",     href: "/our-work"                   },
             ].map(({ label, href }) => (

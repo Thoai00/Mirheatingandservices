@@ -236,7 +236,7 @@ export default function BoilerInstallPage() {
           <div className="text-center mb-14">
             <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Boiler Options</span>
             <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none">
-              Premium Combi <span className="text-[#F2CF51]">Upgrades</span>
+              Combi <span className="text-[#F2CF51]">Upgrades</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
@@ -417,7 +417,7 @@ export default function BoilerInstallPage() {
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-8">Installed Right <br /><span className="text-[#F2CF51]">First Time</span></h2>
               <p className="text-slate-500 text-lg leading-relaxed mb-8">We don't just fit boilers — we design the right heating solution for your home. Gas Safe registered, fully insured, and backed by manufacturer warranties.</p>
               <div className="grid grid-cols-2 gap-3">
-                {["Free Home Survey","Fixed-Price Quotes","Same-Day Install","10yr Warranty Option","All Major Brands","Smart Controls Available","Essex & East London","Finance Options"].map((item) => (
+                {["Free Home Survey","Fixed-Price Quotes","Same-Day Install","5yr Warranty Option","All Major Brands","Smart Controls Available","Essex & East London","Finance Options"].map((item) => (
                   <div key={item} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#F2CF51] flex-shrink-0"></div>
                     <span className="text-[10px] font-black uppercase tracking-wider text-[#12416B]">{item}</span>

@@ -5,18 +5,18 @@ import Image from "next/image";
 import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import BookingPopup from "../../components/BookingPopup";
-import { portfolioProjects, portfolioSubMap } from "../../components/mockdata";
+import { portfolioProjects } from "../../components/mockdata";
 
 const MAIN_CATEGORY = "Boiler Services & Repair";
 const PAGE_SERVICE = {
-  title: "Boiler Services",
-  subtitle: "& Annual Servicing",
-  tagline: "ROUTINE MAINTENANCE & SAFETY CHECKS",
-  price: "75",
+  title: "Boiler Breakdown",
+  subtitle: "& Emergency Repair",
+  tagline: "FAST RESPONSE ACROSS ESSEX",
+  price: "Free Quote",
   description:
-    "Keep your boiler running at peak efficiency with our comprehensive annual service. Our Gas Safe engineers inspect, clean, and test all components to prevent faults before they occur, extending the life of your system.",
+    "No heat or hot water? Our engineers respond fast to boiler breakdowns across Essex. We carry common spare parts on every van for same-day fixes on all major brands including Worcester Bosch, Vaillant, and Baxi.",
 };
-const PORTFOLIO_SUB_FILTER = ["All", "Annual Service", "System Maintenance"];
+const PORTFOLIO_SUB_FILTER = ["All", "Boiler Repair"];
 
 const PAGE_SIZE = 6;
 
@@ -25,25 +25,26 @@ const IconWrench = ({ size = 22, color = "currentColor" }: { size?: number; colo
     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
   </svg>
 );
-const IconSettings = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="3"/>
-    <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-  </svg>
-);
 const IconZap = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
     <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
   </svg>
 );
-const IconThermometer = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
+const IconAlertTriangle = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M14 14.76V3.5a2.5 2.5 0 0 0-5 0v11.26a4.5 4.5 0 1 0 5 0z"/>
+    <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+    <line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>
   </svg>
 );
-const IconDroplet = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
+const IconClock = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/>
+    <circle cx="12" cy="12" r="10"/>
+    <polyline points="12 6 12 12 16 14"/>
+  </svg>
+);
+const IconTool = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
   </svg>
 );
 const IconShieldCheck = ({ size = 20, color = "#F2CF51" }: { size?: number; color?: string }) => (
@@ -66,12 +67,6 @@ const IconCheckCircle = ({ size = 22, color = "currentColor" }: { size?: number;
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
     <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
     <polyline points="22 4 12 14.01 9 11.01"/>
-  </svg>
-);
-const IconCalendar = ({ size = 22, color = "currentColor" }: { size?: number; color?: string }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
-    <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
   </svg>
 );
 
@@ -99,7 +94,7 @@ function ProcessStep({ step, title, desc }: { step: string; title: string; desc:
   );
 }
 
-export default function HeatingServicesPage() {
+export default function BoilerBreakdownPage() {
   const projects = portfolioProjects.filter((p) => p.category === MAIN_CATEGORY);
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -107,7 +102,7 @@ export default function HeatingServicesPage() {
   const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
 
   const filteredProjects = useMemo(() => {
-    if (activeSub === "All") return projects.filter((p) => PORTFOLIO_SUB_FILTER.includes(p.sub_category));
+    if (activeSub === "All") return projects.filter((p) => p.sub_category === "Boiler Repair");
     return projects.filter((p) => p.sub_category === activeSub);
   }, [projects, activeSub]);
 
@@ -128,8 +123,8 @@ export default function HeatingServicesPage() {
               <div className="lg:col-span-7 p-8 md:p-14 lg:p-16 flex flex-col justify-between">
                 <div className="flex flex-col items-start gap-8">
                   <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/10 border border-[#F2CF51]/30 text-[#F2CF51] font-black uppercase tracking-[0.2em] text-[10px]">
-                    <span className="w-2 h-2 rounded-full bg-[#F2CF51] animate-pulse flex-shrink-0"></span>
-                    Gas Safe Registered · Essex &amp; London
+                    <span className="w-2 h-2 rounded-full bg-red-400 animate-pulse flex-shrink-0"></span>
+                    Emergency Response · Essex &amp; London
                   </div>
                   <div>
                     <h1 className="text-5xl md:text-7xl lg:text-[90px] font-black text-white uppercase leading-[0.85] tracking-tighter italic mb-4">
@@ -147,16 +142,16 @@ export default function HeatingServicesPage() {
                 </div>
                 <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6 mt-10">
                   <button onClick={() => setIsPopupOpen(true)} className="inline-flex items-center gap-3 px-10 py-4 bg-[#F2CF51] text-[#12416B] rounded-2xl font-black uppercase tracking-widest shadow-xl hover:scale-105 transition-all text-sm">
-                    Book a Service <IconArrow size={14} color="#12416B" />
+                    Get Emergency Help <IconArrow size={14} color="#12416B" />
                   </button>
                   <div className="flex flex-col">
-                    <span className="text-4xl font-black italic text-[#F2CF51] leading-none">£{PAGE_SERVICE.price}</span>
-                    <span className="text-[9px] font-black uppercase text-white/40 tracking-widest mt-1">From · Annual Service</span>
+                    <span className="text-3xl font-black italic text-[#F2CF51] leading-none">{PAGE_SERVICE.price}</span>
+                    <span className="text-[9px] font-black uppercase text-white/40 tracking-widest mt-1">No Call-Out Fee</span>
                   </div>
                 </div>
               </div>
               <div className="lg:col-span-5 relative min-h-[300px] lg:min-h-0">
-                <Image src="/client/new/heating1.jpeg" alt="Boiler service engineer at work" fill className="object-cover" priority />
+                <Image src="/client/new/heating1.jpeg" alt="Emergency boiler repair engineer" fill className="object-cover" priority />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#12416B] via-[#12416B]/30 to-transparent lg:from-transparent" />
                 <div className="absolute bottom-6 right-6 bg-white rounded-2xl p-4 shadow-2xl">
                   <div className="flex items-center gap-3">
@@ -164,52 +159,52 @@ export default function HeatingServicesPage() {
                       <IconShieldCheck size={18} color="#F2CF51" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-black uppercase tracking-wider text-[#12416B]">Warranty</div>
-                      <div className="text-[9px] text-slate-400 font-bold uppercase">Protected</div>
+                      <div className="text-[10px] font-black uppercase tracking-wider text-[#12416B]">Same Day</div>
+                      <div className="text-[9px] text-slate-400 font-bold uppercase">Response</div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="relative px-8 md:px-16 pb-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-              <StatBadge value="1000+" label="Boilers Serviced" />
-              <StatBadge value="24/7"  label="Emergency Cover" />
-              <StatBadge value="All"   label="Makes & Models" />
-              <StatBadge value="Same Day" label="Availability" />
+              <StatBadge value="Same Day" label="Engineer Dispatch" />
+              <StatBadge value="24/7"     label="Emergency Line" />
+              <StatBadge value="All"      label="Makes & Models" />
+              <StatBadge value="1st Visit" label="Fix Rate" />
             </div>
           </div>
         </section>
 
-        {/* WHY SERVICE YOUR BOILER */}
+        {/* COMMON BREAKDOWNS */}
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#F2CF51] mb-4 block">Manufacturer Requirement</span>
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#F2CF51] mb-4 block">We Fix It Fast</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-6">
-                Why Annual <span className="text-[#F2CF51]">Servicing Matters</span>
+                Common <span className="text-[#F2CF51]">Breakdowns We Fix</span>
               </h2>
               <div className="space-y-4 text-slate-500 text-base leading-relaxed">
-                <p>Most boiler manufacturers require an <strong className="text-[#12416B]">annual service by a Gas Safe registered engineer</strong> to keep your warranty valid. Skipping a service can void your cover entirely.</p>
-                <p>Regular servicing improves efficiency, reduces your gas bills, and catches faults before they become costly breakdowns — especially important heading into winter.</p>
-                <p>Our engineers service all major brands including <strong className="text-[#12416B]">Worcester Bosch, Vaillant, Baxi, Ideal, Viessmann</strong> and more.</p>
+                <p>Our engineers carry the most common spare parts on every van — <strong className="text-[#12416B]">diverter valves, PCBs, pumps, thermistors, and igniters</strong> — so most breakdowns are fixed on the first visit.</p>
+                <p>We diagnose all error codes across all major brands. Whether it's a pressure fault, ignition failure, or frozen condensate pipe, we get your heating back on fast.</p>
+                <p>All repair work is fully guaranteed with <strong className="text-[#12416B]">parts and labour warranty</strong> for complete peace of mind.</p>
               </div>
               <button onClick={() => setIsPopupOpen(true)} className="mt-8 inline-flex items-center gap-3 px-8 py-4 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest shadow-lg hover:opacity-90 transition-all text-xs">
-                Book Now <IconArrow size={13} color="#F2CF51" />
+                Call Now <IconArrow size={13} color="#F2CF51" />
               </button>
             </div>
             <div className="bg-white rounded-[2.5rem] shadow-xl border border-slate-100 overflow-hidden">
               <div className="bg-[#12416B] px-8 py-6">
-                <h3 className="text-white font-black uppercase italic text-xl tracking-tight">What We Do</h3>
-                <p className="text-white/50 text-[11px] uppercase tracking-widest font-bold mt-1">During Every Boiler Service</p>
+                <h3 className="text-white font-black uppercase italic text-xl tracking-tight">Faults We Repair</h3>
+                <p className="text-white/50 text-[11px] uppercase tracking-widest font-bold mt-1">All Major Makes & Models</p>
               </div>
               <div className="p-8 grid gap-1">
                 {[
-                  { icon: <IconSettings size={17} color="#12416B" />,    item: "Full boiler strip-down & clean",        note: "Burner, heat exchanger, electrodes" },
-                  { icon: <IconThermometer size={17} color="#12416B" />, item: "Flue gas analysis & CO testing",         note: "Combustion efficiency check" },
-                  { icon: <IconDroplet size={17} color="#12416B" />,     item: "System pressure & expansion vessel",     note: "Set to manufacturer spec" },
-                  { icon: <IconZap size={17} color="#12416B" />,         item: "Electrical controls & safety checks",    note: "All safety devices tested" },
-                  { icon: <IconWrench size={17} color="#12416B" />,      item: "Condensate trap & pipework",             note: "Cleared & inspected" },
-                  { icon: <IconCalendar size={17} color="#12416B" />,    item: "Service record certificate issued",      note: "For warranty compliance" },
+                  { icon: <IconAlertTriangle size={17} color="#12416B" />, item: "No heating or hot water",         note: "Diverter valve, pump or PCB fault" },
+                  { icon: <IconZap size={17} color="#12416B" />,           item: "Ignition failure & lockout",       note: "Error codes diagnosed & cleared" },
+                  { icon: <IconClock size={17} color="#12416B" />,         item: "Low pressure & pressure loss",     note: "Expansion vessel & filling loop" },
+                  { icon: <IconTool size={17} color="#12416B" />,          item: "Boiler making noises",             note: "Kettling, banging, vibration" },
+                  { icon: <IconWrench size={17} color="#12416B" />,        item: "Leaking boiler",                   note: "Seals, heat exchanger, pump" },
+                  { icon: <IconShieldCheck size={17} color="#12416B" />,   item: "Frozen condensate pipe",           note: "Thaw & insulate same visit" },
                 ].map(({ icon, item, note }) => (
                   <div key={item} className="flex items-center gap-4 p-3 rounded-xl hover:bg-slate-50 transition-colors">
                     <div className="w-9 h-9 rounded-xl bg-slate-50 flex items-center justify-center flex-shrink-0">{icon}</div>
@@ -225,19 +220,19 @@ export default function HeatingServicesPage() {
           </div>
         </section>
 
-        {/* SERVICE CARDS */}
+        {/* BREAKDOWN RESPONSE CARDS */}
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="text-center mb-14">
-            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">What We Cover</span>
+            <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">How We Help</span>
             <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none">
-              Expert System <span className="text-[#F2CF51]">Maintenance</span>
+              Fast Breakdown <span className="text-[#F2CF51]">Response</span>
             </h2>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { num: "01", icon: <IconSettings size={24} />, sub: "Warranty Maintained",  title: "Annual Service",   desc: "Comprehensive boiler service keeping your manufacturer warranty valid and your system running at peak efficiency all year round." },
-              { num: "02", icon: <IconThermometer size={24} />, sub: "Efficiency Boost",  title: "Combustion Check", desc: "Flue gas analysis and combustion testing to ensure your boiler is burning fuel correctly, saving money on your energy bills." },
-              { num: "03", icon: <IconCalendar size={24} />, sub: "Stay Compliant",        title: "Service Record",   desc: "Every service includes a written record certificate to maintain your manufacturer warranty and keep your home fully compliant." },
+              { num: "01", icon: <IconClock size={24} />,         sub: "Rapid Dispatch",    title: "Same Day Response", desc: "We aim to reach you the same day you call. Our engineers cover all Essex postcodes and carry diagnostic equipment for fast fault finding." },
+              { num: "02", icon: <IconWrench size={24} />,        sub: "Parts On The Van",  title: "First Visit Fix",   desc: "Common spare parts are stocked on every van. Diverter valves, PCBs, pumps and more — most jobs are completed without a second visit." },
+              { num: "03", icon: <IconShieldCheck size={24} />,   sub: "Guaranteed Work",   title: "Labour Warranty",   desc: "All repair work comes with a full parts and labour guarantee. If the same fault returns, we come back and fix it at no extra cost." },
             ].map((item) => (
               <div key={item.num} className="group bg-white p-8 md:p-10 rounded-[2.5rem] shadow-lg border border-slate-100 hover:bg-[#12416B] transition-all duration-500 cursor-pointer">
                 <div className="flex justify-between items-start mb-6">
@@ -256,16 +251,16 @@ export default function HeatingServicesPage() {
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
-              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Simple Process</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-10">Your Service <br /><span className="text-[#F2CF51]">In 4 Steps</span></h2>
-              <ProcessStep step="01" title="Book Your Slot"           desc="Call or book online. We offer morning, afternoon and weekend appointments across all Essex postcodes." />
-              <ProcessStep step="02" title="Engineer Arrives"         desc="Your Gas Safe engineer arrives on time with all tools and common spare parts to complete the job in one visit." />
-              <ProcessStep step="03" title="Full Service Carried Out" desc="We strip, clean, test and reassemble your boiler to manufacturer specifications, checking all safety systems." />
-              <ProcessStep step="04" title="Service Record Issued"    desc="You receive a written service record for your warranty file. We'll contact you when next year's service is due." />
+              <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">What Happens Next</span>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-10">Breakdown <br /><span className="text-[#F2CF51]">In 4 Steps</span></h2>
+              <ProcessStep step="01" title="Call or Book Online"     desc="Contact us and describe the fault. We'll give you an estimated arrival time and send the nearest available engineer." />
+              <ProcessStep step="02" title="Engineer Diagnoses"      desc="Your Gas Safe engineer carries out a full fault diagnosis using professional equipment to identify the root cause." />
+              <ProcessStep step="03" title="Repair Carried Out"      desc="We carry common parts to fix most faults on the spot. You'll be given a quote before any work begins — no hidden costs." />
+              <ProcessStep step="04" title="System Tested & Signed Off" desc="Once repaired, we test the full system and issue a job report. You'll receive advice on preventing the fault recurring." />
             </div>
             <div className="space-y-6">
               <div className="bg-[#12416B] rounded-[2rem] p-8 text-white">
-                <h3 className="font-black uppercase italic text-xl text-[#F2CF51] mb-4">Brands We Service</h3>
+                <h3 className="font-black uppercase italic text-xl text-[#F2CF51] mb-4">Brands We Repair</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {["Worcester Bosch","Vaillant","Baxi","Ideal Boilers","Viessmann","Potterton","Glow-worm","Alpha Heating"].map((brand) => (
                     <div key={brand} className="flex items-center gap-3 text-sm text-white/80">
@@ -274,14 +269,14 @@ export default function HeatingServicesPage() {
                   ))}
                 </div>
               </div>
-              <div className="bg-blue-50 border border-blue-100 rounded-[2rem] p-8">
+              <div className="bg-red-50 border border-red-100 rounded-[2rem] p-8">
                 <div className="flex items-start gap-4">
-                  <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <IconCheckCircle size={19} color="#1D4ED8" />
+                  <div className="w-10 h-10 rounded-xl bg-red-100 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <IconAlertTriangle size={19} color="#DC2626" />
                   </div>
                   <div>
-                    <h4 className="font-black uppercase text-[#12416B] text-sm mb-2">Protect Your Warranty</h4>
-                    <p className="text-slate-600 text-sm leading-relaxed">Most boiler warranties require an annual service by a Gas Safe registered engineer. Missed services can invalidate your cover. Book today to stay protected.</p>
+                    <h4 className="font-black uppercase text-[#12416B] text-sm mb-2">No Heat? Don't Wait</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">A boiler breakdown in winter can be dangerous, especially for elderly residents. Call us now for priority same-day attendance across Essex.</p>
                   </div>
                 </div>
               </div>
@@ -295,7 +290,7 @@ export default function HeatingServicesPage() {
             <div className="text-center lg:text-left">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Recent Work</span>
               <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none">
-                Our Work <span className="text-[#F2CF51] [-webkit-text-stroke:1px_#12416B]">Portfolio</span>
+                Our Repair <span className="text-[#F2CF51] [-webkit-text-stroke:1px_#12416B]">Portfolio</span>
               </h2>
             </div>
             <div className="flex flex-wrap justify-center gap-2 bg-white p-1.5 rounded-2xl shadow-sm border border-slate-100">
@@ -341,7 +336,7 @@ export default function HeatingServicesPage() {
             </div>
           ) : (
             <div className="py-32 text-center border-2 border-dashed border-slate-200 rounded-[3rem]">
-              <p className="text-slate-400 font-black uppercase tracking-widest text-xs">No projects found{activeSub !== "All" ? ` in "${activeSub}"` : ""}</p>
+              <p className="text-slate-400 font-black uppercase tracking-widest text-xs">No repair projects found</p>
             </div>
           )}
           {hasMore && (
@@ -357,25 +352,25 @@ export default function HeatingServicesPage() {
         <section className="max-w-7xl mx-auto px-4 md:px-12 lg:px-20 mb-28">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
             <div className="relative h-[400px] md:h-[560px] rounded-[3rem] overflow-hidden shadow-2xl border-8 border-white order-2 lg:order-1">
-              <Image src="/client/new/heating1.jpeg" alt="Boiler engineer at work" fill className="object-cover" />
+              <Image src="/client/new/heating1.jpeg" alt="Boiler repair engineer at work" fill className="object-cover" />
               <div className="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur-sm rounded-2xl p-5 shadow-lg">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-[#12416B] flex items-center justify-center flex-shrink-0">
                     <IconCheckCircle size={22} color="#F2CF51" />
                   </div>
                   <div>
-                    <div className="font-black uppercase text-[#12416B] text-sm">All Brands Covered</div>
-                    <div className="text-slate-500 text-[11px] mt-0.5">Worcester, Vaillant, Baxi & all others</div>
+                    <div className="font-black uppercase text-[#12416B] text-sm">Parts On Every Van</div>
+                    <div className="text-slate-500 text-[11px] mt-0.5">First-visit fix for most breakdowns</div>
                   </div>
                 </div>
               </div>
             </div>
             <div className="order-1 lg:order-2">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 mb-3 block">Why Essex Trusts Us</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-8">Expert Care <br /><span className="text-[#F2CF51]">Every Visit</span></h2>
-              <p className="text-slate-500 text-lg leading-relaxed mb-8">Gas Safe registered, fully insured engineers who know boilers inside and out. We carry parts for all major brands so most repairs are done on the spot.</p>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter text-[#12416B] leading-none mb-8">Rapid Repair <br /><span className="text-[#F2CF51]">Every Time</span></h2>
+              <p className="text-slate-500 text-lg leading-relaxed mb-8">Gas Safe registered, fully insured engineers with parts stocked on every van. We diagnose fast and fix right first time.</p>
               <div className="grid grid-cols-2 gap-3">
-                {["Same-Day Service","Fully Insured Engineers","Service Records Issued","Warranty Compliant","All Brands Covered","Parts Carried On Van","Essex & East London","Landlord Packages"].map((item) => (
+                {["Same-Day Attendance","Fully Insured Engineers","Parts & Labour Warranty","All Error Codes Fixed","All Brands Covered","Parts Carried On Van","Essex & East London","No Fix No Fee Option"].map((item) => (
                   <div key={item} className="bg-white p-4 rounded-xl shadow-sm border border-slate-100 flex items-center gap-3">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#F2CF51] flex-shrink-0"></div>
                     <span className="text-[10px] font-black uppercase tracking-wider text-[#12416B]">{item}</span>
@@ -391,10 +386,10 @@ export default function HeatingServicesPage() {
           <div className="bg-[#12416B] rounded-[2.5rem] md:rounded-[4rem] overflow-hidden flex flex-col lg:flex-row shadow-2xl border-4 md:border-[10px] border-white">
             <div className="p-10 md:p-16 lg:w-7/12 text-white text-center lg:text-left">
               <span className="text-[10px] font-black uppercase tracking-[0.25em] text-[#F2CF51]/60 mb-3 block">Transparent Pricing</span>
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-6 leading-none tracking-tighter">Boiler Service <br /><span className="text-[#F2CF51]">Packages</span></h2>
-              <p className="text-white/60 text-base leading-relaxed max-w-md mb-10">Fixed-price servicing with no hidden call-out fees. Landlord multi-property packages available on request.</p>
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic mb-6 leading-none tracking-tighter">Emergency Repair <br /><span className="text-[#F2CF51]">Pricing</span></h2>
+              <p className="text-white/60 text-base leading-relaxed max-w-md mb-10">Fixed call-out fee with no hidden extras. Parts quoted before work begins. No fix, no fee available on request.</p>
               <div className="grid sm:grid-cols-2 gap-3">
-                {["Full Boiler Strip & Clean","Flue Gas Analysis","System Pressure Check","All Safety Devices Tested","Service Record Certificate","Landlord Packages Available"].map((li) => (
+                {["Full Fault Diagnosis","Error Code Cleared","Parts Quoted Upfront","Parts & Labour Warranty","All Brands Covered","Same-Day Availability"].map((li) => (
                   <div key={li} className="flex items-center justify-center lg:justify-start gap-3 text-[10px] font-black uppercase">
                     <span className="text-[#F2CF51] flex-shrink-0"><IconCheck size={12} color="#F2CF51" /></span>
                     <span className="text-white/80">{li}</span>
@@ -404,14 +399,14 @@ export default function HeatingServicesPage() {
             </div>
             <div className="bg-[#F2CF51] p-10 md:p-16 lg:w-5/12 flex flex-col items-center justify-center text-[#12416B] gap-6">
               <div className="text-center">
-                <span className="font-black uppercase text-[10px] tracking-widest opacity-60 block mb-1">Starting From</span>
-                <div className="text-7xl md:text-9xl font-black italic leading-none">£{PAGE_SERVICE.price}</div>
-                <span className="text-[10px] font-black uppercase tracking-widest opacity-60 mt-2 block">Annual Service · Inc. VAT</span>
+                <span className="font-black uppercase text-[10px] tracking-widest opacity-60 block mb-1">Call-Out From</span>
+                <div className="text-7xl md:text-6xl font-black italic leading-none">{PAGE_SERVICE.price}</div>
+                <span className="text-[10px] font-black uppercase tracking-widest opacity-60 mt-2 block">Inc. Diagnosis · Parts Extra</span>
               </div>
               <button onClick={() => setIsPopupOpen(true)} className="w-full py-5 bg-[#12416B] text-[#F2CF51] rounded-2xl font-black uppercase tracking-widest hover:scale-105 transition-all shadow-2xl text-sm">
-                Book My Boiler Service
+                Get Emergency Help Now
               </button>
-              <p className="text-[9px] font-black uppercase tracking-wider text-[#12416B]/50 text-center">No hidden fees · Same-day availability · Gas Safe registered</p>
+              <p className="text-[9px] font-black uppercase tracking-wider text-[#12416B]/50 text-center">No hidden fees · Same-day attendance · Gas Safe registered</p>
             </div>
           </div>
         </section>

@@ -32,7 +32,7 @@ export const servicesData: ServiceItem[] = [
     icon: "🔥",
     tagline: "Landlord & Homeowner Compliance",
     price: "60",
-    image_path: "/client/new/gas1.jpeg",
+    image_path: "/client/WhatsApp Image 2026-05-04 at 4.52.04 PM.jpeg",
     description:
       "Fully certified Gas Safe engineers carry out comprehensive inspections of all gas appliances, flues, and pipework. We issue same-day CP12 certificates for landlords, letting agents, and homeowners across Essex.",
     path: "/services/gas-services",
@@ -40,23 +40,35 @@ export const servicesData: ServiceItem[] = [
   {
     id: 2,
     title: "Boiler Services",
-    subtitle: "& Repair",
-    icon: "🛠️",
-    tagline: "All Makes & Models Covered",
+    subtitle: "& Annual Servicing",
+    icon: "🔧",
+    tagline: "Routine Maintenance & Safety Checks",
     price: "75",
     image_path: "/client/new/heating1.jpeg",
     description:
-      "From no-heat emergencies to annual servicing, our engineers diagnose and repair all major boiler brands. We carry common spare parts on every van for fast, first-visit fixes throughout Essex.",
+      "Keep your boiler running at peak efficiency with our comprehensive annual service. Our Gas Safe engineers inspect, clean, and test all components to prevent faults before they occur, extending the life of your system.",
     path: "/services/heating-services",
   },
   {
     id: 3,
+    title: "Boiler Breakdown",
+    subtitle: "& Emergency Repair",
+    icon: "🛠️",
+    tagline: "Fast Response Across Essex",
+    price: "Free Quote", // ✅ UK‑standard wording
+    image_path: "/client/new/heating1.jpeg",
+    description:
+      "No heat or hot water? Our engineers respond fast to boiler breakdowns across Essex. We carry common spare parts on every van for same-day fixes on all major brands including Worcester Bosch, Vaillant, and Baxi.",
+    path: "/services/boiler-breakdown",
+  },
+  {
+    id: 4,
     title: "Boiler Supply",
     subtitle: "& Installation",
     icon: "⚙️",
     tagline: "Worcester Bosch & Vaillant Approved",
-    price: "1,500",
-    image_path: "/client/new/heatingtwo.jpeg",
+    price: "1,450",
+    image_path: "/client/4.jpeg",
     description:
       "New boiler supply and full installation by Gas Safe registered engineers. We offer competitive quotes on Worcester Bosch, Vaillant, and Baxi systems with full manufacturer warranties and flexible finance options.",
     path: "/services/boiler-install",
@@ -82,28 +94,38 @@ export const servicePagesData: ServicePageData[] = [
     price: "60",
     tagline: "CERTIFIED GAS ENGINEERING",
     description:
-      "Gas Safe registered inspections, leak detection, and emergency gas escape repairs. Professional CP12 certification for Essex landlords and homeowners.",
-    hero_image: "/client/new/gas1.jpeg",
+      "Gas Safe registered inspections, Professional CP12 certification for Essex landlords and homeowners.",
+    hero_image: "/client/WhatsApp Image 2026-05-04 at 4.52.04 PM.jpeg",
   },
   {
     id: "2",
     title: "Boiler Services",
-    subtitle: "& Repair",
+    subtitle: "& Annual Servicing",
+    tagline: "Routine Maintenance & Safety Checks",
     price: "75",
-    tagline: "ALL MAKES & MODELS COVERED",
-    description:
-      "From no-heat emergencies to annual servicing, our engineers diagnose and repair all major boiler brands. We carry common spare parts on every van for fast, first-visit fixes throughout Essex.",
     hero_image: "/client/new/heating1.jpeg",
+    description:
+      "Keep your boiler running at peak efficiency with our comprehensive annual service. Our Gas Safe engineers inspect, clean, and test all components to prevent faults before they occur, extending the life of your system.",
   },
   {
     id: "3",
+    title: "Boiler Breakdown",
+    subtitle: "& Emergency Repair",
+    tagline: "Fast Response Across Essex",
+    price: "Free Quote",
+    hero_image: "/client/new/heating1.jpeg",
+    description:
+      "No heat or hot water? Our engineers respond fast to boiler breakdowns across Essex. We carry common spare parts on every van for same-day fixes on all major brands including Worcester Bosch, Vaillant, and Baxi.",
+  },
+  {
+    id: "4",
     title: "Boiler Supply",
     subtitle: "& Installation",
-    price: "1,500",
-    tagline: "PREMIUM COMBI UPGRADES",
+    price: "1,450",
+    tagline: "COMBI UPGRADES",
     description:
       "Premium combi boiler supply and installation from leading manufacturers. Fully fitted by Gas Safe engineers with 10-year warranty options.",
-    hero_image: "/client/new/heatingtwo.jpeg",
+    hero_image: "/client/4.jpeg",
   },
 ];
 

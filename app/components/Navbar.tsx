@@ -10,7 +10,8 @@ export default function Navbar() {
 
   const servicesLinks = [
      { name: "Gas Safety Certificate (CP12)", path: "/services/gas-services" },
-    { name: "Boiler Services & Repair", path: "/services/heating-services" },
+    { name: "Boiler Services & Annual Servicing", path: "/services/heating-services" },
+    { name: "Boiler Breakdown & Emergency Repairs", path: "/services/boiler-breakdown" },
     { name: "Boiler Supply & Installation", path: "/services/boiler-install" },
   ];
 
@@ -39,7 +40,7 @@ export default function Navbar() {
                   Expert Services
                   <svg className="w-3 h-3 transition-transform group-hover:rotate-180" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
               </button>
-              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 w-64 bg-white/95 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden flex flex-col p-2">
+              <div className="absolute top-[80%] left-1/2 -translate-x-1/2 w-100 bg-white/95 backdrop-blur-xl rounded-2xl border border-white/60 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 overflow-hidden flex flex-col p-2">
                   {servicesLinks.map((service) => (
                       <Link key={service.name} href={service.path} className="block px-6 py-4 hover:bg-[#12416B]/5 rounded-xl text-center hover:text-[#F2CF51] transition-colors text-[11px] font-black uppercase tracking-[0.2em]">
                           {service.name}
@@ -57,7 +58,7 @@ export default function Navbar() {
             ))}
 
             <a href="tel:+44 7951 803179" className="rounded-2xl bg-[#12416B] px-8 py-4 text-[#F2CF51] shadow-[0_15px_30px_rgba(18,65,107,0.3),inset_0_-4px_0_rgba(0,0,0,0.2)] hover:-translate-y-1 active:translate-y-px transition-all">
-                GET A QUOTE
+                GET Free QUOTE
             </a>
           </div>
         </div>

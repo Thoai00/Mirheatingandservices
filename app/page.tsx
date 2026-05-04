@@ -10,6 +10,7 @@ import AboutSection from "./components/AboutSection";
 import Footer from "./components/Footer";
 import JsonLdSchema from "./components/JsonLdSchema";
 
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-[#E9EDF2] font-sans text-[#12416B] antialiased">
