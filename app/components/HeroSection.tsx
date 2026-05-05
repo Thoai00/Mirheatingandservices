@@ -53,7 +53,7 @@ export default function HeroSection() {
 
             <p className="max-w-xl text-base md:text-xl text-slate-500/90 leading-relaxed mx-auto lg:mx-0 font-medium border-l-4 md:border-l-8 border-[#F2CF51] pl-5 md:pl-8 text-left">
               Your trusted local experts for{" "}
-              <strong>Boiler Repairs, Gas Safety and Heating Maintenance across Essex</strong>. We
+              <strong>Landlord Gas Safety Certificate(CP12) and Boiler Repairs, Servicing, Supply, Install across Essex</strong>. We
               keep Essex homes warm and safe.
             </p>
 

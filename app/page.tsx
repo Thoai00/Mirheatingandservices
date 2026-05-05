@@ -9,6 +9,7 @@ import ProtocolSection from "./components/ProtocolSection";
 import AboutSection from "./components/AboutSection";
 import Footer from "./components/Footer";
 import JsonLdSchema from "./components/JsonLdSchema";
+import SummerPopup from "./components/SummerPopup";
 
 
 export default function Home() {
@@ -25,14 +26,14 @@ export default function Home() {
       {/* --- SEO SCHEMA --- */}
       <JsonLdSchema />
 
+      {/* --- SUMMER POPUP (shown on page load) --- */}
+      <SummerPopup />
+
       {/* --- PAGE CONTENT --- */}
       <Navbar />
       <HeroSection />
       <ServicesGrid />
-
-      {/* ✅ NEW: Customer Reviews Section */}
       <ReviewsSection />
-
       <RecentWorks />
       <ProfessionalStandards />
       <PartnersSection />

@@ -1,20 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface ContactInfo {
-  phone:   string;
-  email:   string;
-  address: string;
-}
 
 /* ═══════════════════════════════════════════════
    SVG PAYMENT ICONS
 ═══════════════════════════════════════════════ */
 
-/** Visa — clean official wordmark SVG */
 function VisaIcon() {
   return (
     <svg width="38" height="13" viewBox="0 0 1000 324" xmlns="http://www.w3.org/2000/svg" aria-label="Visa">
@@ -35,7 +28,6 @@ function VisaIcon() {
   );
 }
 
-/** Mastercard — two overlapping circles */
 function MastercardIcon() {
   return (
     <svg width="36" height="24" viewBox="0 0 152 100" xmlns="http://www.w3.org/2000/svg" aria-label="Mastercard">
@@ -49,7 +41,6 @@ function MastercardIcon() {
   );
 }
 
-/** Official Google multicolour "G" */
 function GoogleGIcon({ size = 15 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-label="Google">
@@ -61,7 +52,6 @@ function GoogleGIcon({ size = 15 }: { size?: number }) {
   );
 }
 
-/** Apple  */
 function AppleIcon({ size = 13 }: { size?: number }) {
   return (
     <svg width={size} height={size * 1.22} viewBox="0 0 814 1000" fill="white" xmlns="http://www.w3.org/2000/svg" aria-label="Apple">
@@ -71,7 +61,7 @@ function AppleIcon({ size = 13 }: { size?: number }) {
 }
 
 /* ═══════════════════════════════════════════════
-   PAYMENT BADGES  (exported → used in BookingPopup too)
+   PAYMENT BADGES
 ═══════════════════════════════════════════════ */
 export function PaymentBadges({ dark = true }: { dark?: boolean }) {
   const labelCls = dark
@@ -95,44 +85,31 @@ export function PaymentBadges({ dark = true }: { dark?: boolean }) {
       </div>
 
       <div className="flex flex-wrap gap-2">
-
-        {/* Visa */}
         <div className={`${pill} bg-gradient-to-br from-[#1A1F71] to-[#2541b2]`}>
           <VisaIcon />
         </div>
-
-        {/* Mastercard */}
         <div className={`${pill} bg-[#1a1a1a]`}>
           <MastercardIcon />
         </div>
-
-        {/* PayPal */}
         <div className={`${pill} bg-gradient-to-br from-[#003087] to-[#0070ba]`}>
           <span className="font-black text-sm leading-none">
             <span className="text-[#79c6f0]">Pay</span>
             <span className="text-white">Pal</span>
           </span>
         </div>
-
-        {/* Google Pay */}
         <div className={`${pill} bg-gradient-to-br from-[#1e1e1e] to-[#2c2c2c] border border-white/10`}>
           <GoogleGIcon size={15} />
           <span className="font-black text-white text-xs tracking-wide">Pay</span>
         </div>
-
-        {/* Apple Pay */}
         <div className={`${pill} bg-gradient-to-br from-[#1c1c1e] to-[#313131]`}>
           <AppleIcon size={12} />
           <span className="font-black text-white text-xs">Pay</span>
         </div>
-
-        {/* Pay On-Site */}
         <div className={`${pill} bg-gradient-to-br from-[#F2CF51] to-[#d4a800]`}>
           <span className="font-black text-[#0e2a45] text-[11px] uppercase tracking-wider whitespace-nowrap">
             Pay On-Site
           </span>
         </div>
-
       </div>
     </div>
   );
@@ -150,11 +127,8 @@ const DIRECTIONS_URL =
 function MapSection() {
   return (
     <div className="mx-auto max-w-7xl px-6 mb-16">
-
-      {/* Section header */}
       <div className="flex items-center gap-4 mb-6">
         <div className="flex items-center gap-3">
-          {/* pin icon */}
           <span className="flex items-center justify-center w-8 h-8 rounded-full bg-[#F2CF51]/15 border border-[#F2CF51]/30">
             <svg className="w-4 h-4 text-[#F2CF51]" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
@@ -178,10 +152,7 @@ function MapSection() {
         </a>
       </div>
 
-      {/* Map card */}
       <div className="relative group rounded-3xl overflow-hidden shadow-2xl shadow-black/40">
-
-        {/* Decorative top bar */}
         <div className="absolute top-0 left-0 right-0 z-10 flex items-center justify-between px-5 py-3 bg-gradient-to-b from-black/70 to-transparent">
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-[#4ADE80] shadow-[0_0_8px_rgba(74,222,128,0.7)]" />
@@ -196,7 +167,6 @@ function MapSection() {
           </div>
         </div>
 
-        {/* Corner accent lines */}
         <div className="absolute top-0 left-0 w-12 h-12 z-20 pointer-events-none">
           <div className="absolute top-3 left-3 w-6 h-px bg-[#F2CF51]" />
           <div className="absolute top-3 left-3 w-px h-6 bg-[#F2CF51]" />
@@ -214,10 +184,8 @@ function MapSection() {
           <div className="absolute bottom-3 right-3 w-px h-6 bg-[#F2CF51]" />
         </div>
 
-        {/* Overlay border glow on hover */}
         <div className="absolute inset-0 z-10 rounded-3xl ring-1 ring-[#F2CF51]/20 group-hover:ring-[#F2CF51]/50 transition-all duration-500 pointer-events-none" />
 
-        {/* iframe */}
         <iframe
           src={MAP_EMBED}
           width="100%"
@@ -229,7 +197,6 @@ function MapSection() {
           title="MIR Heating & Services location"
         />
 
-        {/* Bottom CTA overlay */}
         <a
           href={DIRECTIONS_URL}
           target="_blank"
@@ -250,26 +217,10 @@ function MapSection() {
    FOOTER
 ═══════════════════════════════════════════════ */
 export default function Footer() {
-  const [contact, setContact] = useState<ContactInfo>({
-    phone:   "+44 7951 803179",
-    email:   "info@mirplumbing.co.uk",
-    address: "Essex, United Kingdom",
-  });
-
-  useEffect(() => {
-    fetch("/api/security/contact")
-      .then((r) => r.json())
-      .then((json) => {
-        if (json.success && json.data) {
-          setContact({
-            phone:   json.data.phone,
-            email:   json.data.email,
-            address: json.data.address,
-          });
-        }
-      })
-      .catch(() => {});
-  }, []);
+  // Contact info — hardcoded (no API fetch)
+  const phone   = "+44 7951 803179";
+  const email   = "";
+  const address = "8 Dixon Ave, Chelmsford CM1 2AQ, United Kingdom";
 
   return (
     <footer className="bg-[#0e2a45] text-white pt-20 pb-12 border-t border-white/5">
@@ -303,12 +254,12 @@ export default function Footer() {
           <h4 className="text-[#F2CF51] font-bold uppercase tracking-widest mb-6">Services</h4>
           <ul className="space-y-4 text-blue-200/70">
             {[
-              { label: "Gas Safety Certificate(CP12)",      href: "/services/gas-services"     },
-              { label: "Boiler Services & Annual Servicing", href: "/services/heating-services" },
-              { label: "Boiler Breakdown & Repair",  href: "/services/boiler-breakdown"  },
-              { label: "Boiler Supply & Installation",  href: "/services/boiler-install"  },
-              { label: "Home Improvement",  href: "/home-improvement"           },
-              { label: "Our Portfolio",     href: "/our-work"                   },
+              { label: "Gas Safety Certificate(CP12)",       href: "/services/gas-services"     },
+              { label: "Boiler Services & Annual Servicing",  href: "/services/heating-services" },
+              { label: "Boiler Breakdown & Repair",           href: "/services/boiler-breakdown" },
+              { label: "Boiler Supply & Installation",        href: "/services/boiler-install"   },
+              { label: "Home Improvement",                    href: "/home-improvement"           },
+              { label: "Our Portfolio",                       href: "/our-work"                   },
             ].map(({ label, href }) => (
               <li key={href}>
                 <Link href={href} className="hover:text-white transition-colors">{label}</Link>
@@ -321,15 +272,15 @@ export default function Footer() {
         <div>
           <h4 className="text-[#F2CF51] font-bold uppercase tracking-widest mb-6">Contact</h4>
           <ul className="space-y-4 text-blue-200/70">
-            <li>{contact.address}</li>
+            <li>{address}</li>
             <li>
-              <a href={`tel:${contact.phone.replace(/\s/g, "")}`} className="hover:text-white transition-colors">
-                {contact.phone}
+              <a href={`tel:${phone.replace(/\s/g, "")}`} className="hover:text-white transition-colors">
+                {phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${contact.email}`} className="hover:text-white transition-colors">
-                {contact.email}
+              <a href={`mailto:${email}`} className="hover:text-white transition-colors">
+                {email}
               </a>
             </li>
           </ul>
@@ -344,7 +295,7 @@ export default function Footer() {
 
       {/* ── COPYRIGHT ── */}
       <div className="border-t border-white/5 pt-8 mx-auto max-w-7xl px-6 flex flex-col md:flex-row justify-between items-center text-xs text-blue-200/40 gap-4">
-        <p>&copy; {new Date().getFullYear()} MIR Heating and Services Ltd. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Mir Heating and Services Ltd. All rights reserved.</p>
         <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6">
           <p>UK Registered Company.</p>
           <span className="hidden md:block w-1 h-1 rounded-full bg-white/20" />
